@@ -39,7 +39,7 @@ dependencies:
     - chmod +x ./cc-test-reporter 
 
 deployment:
-  production: # just a label; label names are completely up to you
+  staging: # just a label; label names are completely up to you
     branch: master
     heroku:
       appname: midimar

@@ -8,3 +8,10 @@ const query = client.query(
   'CREATE TABLE items(id SERIAL PRIMARY KEY, text VARCHAR(40) not null, complete BOOLEAN)');
 query.on('end', () => { client.end(); });
 */
+
+module.exports.registerCommunication = async function(communicationMode,callback){
+  const query = client.query(
+  'INSERT INTO communication  (email, phone, communicationMode, disaster, level, place, languguage)VALUES('+communicationMode.getEMail()+','+communicationMode.getPhone()+','+communicationMode.getCommunicationMode()+','+communicationMode.getDisaster()+','+communicationMode.Level()+','+communicationMode.getPlace()+','+communicationMode.getLanguage()+')'
+  )
+   query.on('end', () => { client.end(); });
+}

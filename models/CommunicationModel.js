@@ -18,7 +18,9 @@ class CommunicationModel {
     getEmail() {
         return this.email;
     }
-
+    getPhone(){
+        return this.phone;
+    }
     getCommunicationMode() {
         return this.communicationMode;
     }

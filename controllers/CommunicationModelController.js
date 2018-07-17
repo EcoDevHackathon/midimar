@@ -2,12 +2,14 @@
 "use strict"
 var CommunicationModel = require('../models/CommunicationModel.js');
 
-//module.exports.registerCommunicationModel = async function registerCommunicationModel(email, phone, communicationMode, disaster, level, place, language, callback) {
 async function registerCommunicationModel(email, phone, communicationMode, disaster, level, place, language, callback) {
-     var communication = new CommunicationModel(email, phone, communicationMode, disaster, level, place, language);
-    console.log("logs in controllers!!!!!!!!!!!!!!!!");
+    var communication = new CommunicationModel(email, phone, communicationMode, disaster, level, place, language);
+    //console.log("logs in controllers!!!!!!!!!!!!!!!!");
     communication.registerCommunicationModel();
 }
 
-registerCommunicationModel('ja@gmail', '873', 'email', 'fire', 3, 'Butare', 'english');
+registerCommunicationModel('rodger@gmail.com', '873757575', 'email', 'fire', 3, 'Butare', 'english');
+
+//write function to send email according to the selected query
+
 

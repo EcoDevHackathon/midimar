@@ -2,6 +2,8 @@
  * Author D.Bernard
  */
 
+var schema = require('../middleware/pg_dbschema.js');
+
 "use strict"
 class CommunicationModel {
     constructor(email, phone, communicationMode, disaster, level, place, languguage) {
@@ -42,7 +44,7 @@ class CommunicationModel {
     }
 
     registerCommunicationModel() {
-      
+        schema.registerCommunicationModel(this);
     }
 }
 

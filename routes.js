@@ -19,6 +19,13 @@ var ERController
 var ERModel
 
 var user;
+
+//route for registering commmunication
+router.get('/registerCommunication', function(req, res) {
+ 
+        res.render('pages/registerCommunication');
+    });
+
 router.get('/', function(req, res) {
     user = req.session;
     user.username;

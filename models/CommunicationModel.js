@@ -42,7 +42,7 @@ class CommunicationModel {
     }
 
     registerCommunicationModel() {
-        var message = this
+      
     }
 }
 

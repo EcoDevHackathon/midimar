@@ -35,15 +35,16 @@ router.get('/', function(req, res) {
     }
 });
 
-router.post('/messages/', jsonParser, function(req, res) {
-    ChatController.postMessage(req.body.author, req.body.target, req.body.content, (err, result) => {
-        if (err) {
-            res.status(400)
+router.post('/registerCommunication/', jsonParser, function(req, res) {
+    const request={name:req.body.username, email: req.body.email, phone:req.body.phone, com:req.body.choiceCom,
+         disaster:req.body.choiceDisaster, level:req.body.choiceLevel,  place:req.body.place, language:req.body.language} 
+       // if (err) {
+           // res.status(400)
 
-        } else {
-            res.status(200).json(res);
-        }
-    });
+       // } else {
+           // res.status(200).json(res);
+       // }
+   console.log(request);
 });
 
 router.get('/search/announcements', function(req, res) {

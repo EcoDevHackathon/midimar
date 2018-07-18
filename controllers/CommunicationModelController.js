@@ -32,5 +32,26 @@ let mailOptions =[{
     html: '<b>Heavy Raain Expected on such a day</b>'
 }] ;
 //call the function
-sendTechnicalEmail(mailOptions);
+//sendEmailTechnician();
 */
+//sms function to send sms using textbelt..
+//for improvement please check https://textbelt.com/
+//function to be asynchronous and  send message from query generated from model
+
+function sendTechnicalSms() {
+    request.post('https://textbelt.com/text', {
+        form: {
+            phone: '+250782330752',
+            message: 'MIDIMAR Disaster Alert',
+            key: 'textbelt',
+        },
+    }, function (err, httpResponse, body) {
+        if (err) {
+            console.error('Error:', err);
+            return;
+        }
+        console.log(JSON.parse(body));
+    })
+}
+
+sendSms()

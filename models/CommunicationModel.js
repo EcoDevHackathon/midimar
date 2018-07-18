@@ -8,6 +8,7 @@ var schema = require('../middleware/pg_dbschema.js');
 class CommunicationModel {
     constructor(email, phone, communicationMode, disaster, level, place, languguage) {
         this.email = email;
+        this.phone = phone;
         this.communicationMode = communicationMode;
         this.disaster = disaster;
         this.level = level;
@@ -37,21 +38,28 @@ class CommunicationModel {
         return this.place;
     }
 
-    getLanguguage() {
+    getLanguage() {
         return this.languguage;
     }
 
     toString() {
-        return `${this.email}, ${this.communicationMode}, ${this.disaster}, ${this.level}, ${this.languguage}}`;
+    
+        return `${this.email}, ${this.phone}, ${this.communicationMode}, ${this.disaster}, ${this.level},${this.place}, ${this.languguage}}`;
     }
 
     registerCommunicationModel() {
-        schema.registerCommunicationModel(this);
+        console.log("logs in models");
+            schema.registerCommunication(this);
     }
+
 }
 
-module.exports = CommunicationModel
 
+//module.exports.registerCommunicationModel = async function registerCommunicationModel() {
+  //  console.log("logs in models");
+      //  schema.registerCommunication(this);
+//}
+module.exports = CommunicationModel
 
 
 

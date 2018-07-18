@@ -2,6 +2,7 @@
 "use strict"
 var CommunicationModel = require('../models/CommunicationModel.js');
 const nodemailer = require('nodemailer');
+var request = require('request');
 
 async function registerCommunicationModel(email, phone, communicationMode, disaster, level, place, language, callback) {
     var communication = new CommunicationModel(email, phone, communicationMode, disaster, level, place, language);
@@ -41,4 +42,26 @@ function sendEmailTechnician() {
 }
 
 //call the function
-sendEmailTechnician();
+//sendEmailTechnician();
+
+//sms function to send sms using textbelt..
+//for improvement please check https://textbelt.com/
+//function to be asynchronous and  send message from query generated from model
+
+function sendSmsTechnician() {
+    request.post('https://textbelt.com/text', {
+        form: {
+            phone: '+250782330752',
+            message: 'MIDIMAR Disaster Alert',
+            key: 'textbelt',
+        },
+    }, function (err, httpResponse, body) {
+        if (err) {
+            console.error('Error:', err);
+            return;
+        }
+        console.log(JSON.parse(body));
+    })
+}
+
+sendSms()

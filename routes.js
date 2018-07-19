@@ -28,10 +28,19 @@ router.get('/registerCommunication', function (req, res) {
 //route for visualisation
 router.get('/visualisation', function (req, res) {
 
+<<<<<<< HEAD
     res.render('pages/visualisation');
 });
 
 router.get('/', function (req, res) {
+=======
+    //route for sending meteo alert
+router.get('/RainfallAlert', function(req, res) {
+ 
+    res.render('pages/RainfallAlert');
+});
+router.get('/', function(req, res) {
+>>>>>>> a6bfcf2d04517ec9d95734a09ddcd22309fe1562
     user = req.session;
     user.username;
     user.password;

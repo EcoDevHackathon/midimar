@@ -1,6 +1,6 @@
-/*Group Rw1 fse emergency network*/
+/*MIDIMAR CLIMATE HACKATHON*/
 /*This the main engine of the esn project**/
-/*created at 1:19 AM CAT 2/16/2018**/
+/*created 7/18/2018 **/
 /****happy coding guys **********/
 
 /*
@@ -65,11 +65,8 @@ function start() {
     });
 
 }
-
 start()
 
-module.exports.socketio = io;
-//module.exports.start = start;
 
 
 

@@ -21,35 +21,35 @@ var ERModel
 var user;
 
 //route for registering commmunication
-router.get('/registerCommunication', function(req, res) {
- 
-        res.render('pages/registerCommunication');
-    });
+router.get('/registerCommunication', function (req, res) {
+
+    res.render('pages/registerCommunication');
+});
+//route for visualisation
+router.get('/visualisation', function (req, res) {
 
     //route for sending meteo alert
-router.get('/RainfallAlert', function(req, res) {
-    res.render('pages/RainfallAlert');
+    router.get('/RainfallAlert', function (req, res) {
+
+        res.render('pages/RainfallAlert');
+    });
+
+
+    router.post('/registerCommunication/', jsonParser, function (req, res) {
+        const request = {
+            name: req.body.username, email: req.body.email, phone: req.body.phone, com: req.body.choiceCom,
+            disaster: req.body.choiceDisaster, level: req.body.choiceLevel, place: req.body.place, language: req.body.language
+        }
+        // if (err) {
+        // res.status(400)
+
+        // } else {
+        // res.status(200).json(res);
+        // }
+        console.log(request);
+    });
 });
 
-router.get('/', function(req, res) {
-    user = req.session;
-    user.username;
-    user.password;
-    if (!user.username) {
-        res.render('pages/home');
-    }
-});
-
-router.post('/registerCommunication/', jsonParser, function(req, res) {
-    const request={name:req.body.username, email: req.body.email, phone:req.body.phone, com:req.body.choiceCom,
-         disaster:req.body.choiceDisaster, level:req.body.choiceLevel,  place:req.body.place, language:req.body.language} 
-       // if (err) {
-           // res.status(400)
-
-       // } else {
-           // res.status(200).json(res);
-       // }
-   console.log(request);
-});
-
+//default  home route 
+router.get('/', function (req, res) { res.render('pages/home'); });
 module.exports = router

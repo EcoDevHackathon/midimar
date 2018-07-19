@@ -3,7 +3,8 @@
  */
 
 "use strict"
-class Sms {
+const nodemailer = require('nodemailer');
+class Message {
     constructor(message, receipient, date) {
         this.message = message;
         this.receipient = receipient;
@@ -26,33 +27,21 @@ class Sms {
         return `${this.message}, ${this.receipient}, ${this.date}}`;
     }
 
-    registerCommunicationModel() {
-
-        var message = this
-
-
-    }
 
     sendPublicEmail(receiverEmailAddress, alert) {
 
-      
 
-
-    }
-
-    sendPubliSms(receiverPhoneNumber, alert) {
-
-       
 
 
     }
 
-    sendTechnicalEmail(receiverEmailAddress, alert) {
+    sendPublicSms(receiverPhoneNumber, alert) {
 
-        
+
 
 
     }
+
 
     sendTechnicalSms(receiverPhoneNumber, alert) {
 
@@ -64,7 +53,35 @@ class Sms {
 
 }
 
-module.exports = CommunicationModel
+module.exports = Message
+
+module.exports.sendTechnicalEmail = function sendTechnicalEmail(mailOptions) {
+    nodemailer.createTestAccount((err, account) => {
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: 'midimaralert@gmail.com',
+                pass: 'h0zg0Kkbupe$B3!B'
+            }
+        });
+        for(var i=0; i<mailOptions.length;i++){
+        transporter.sendMail(mailOptions[i], (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+        });
+    }
+        //
+    });
+
+
+}
+
+
 
 
 

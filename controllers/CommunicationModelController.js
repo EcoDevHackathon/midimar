@@ -2,6 +2,7 @@
 "use strict"
 var CommunicationModel = require('../models/CommunicationModel.js');
 var Message = require('../models/Message.js');
+var request = require('request');
 
 async function registerCommunicationModel(email, phone, communicationMode, disaster, level, place, language, callback) {
     console.log("registering communication mode");
@@ -39,19 +40,34 @@ let mailOptions =[{
 //function to be asynchronous and  send message from query generated from model
 
 function sendTechnicalSms() {
-    request.post('https://textbelt.com/text', {
-        form: {
-            phone: '+250782330752',
-            message: 'MIDIMAR Disaster Alert',
-            key: 'textbelt',
-        },
-    }, function (err, httpResponse, body) {
-        if (err) {
-            console.error('Error:', err);
-            return;
-        }
-        console.log(JSON.parse(body));
-    })
+    /*
+     request.post('https://textbelt.com/text', {
+       form: {
+             phone: '+250785115074',
+             message: 'MIDIMAR Disaster Alert',
+             key: 'textbelt',
+         },
+     }, function (err, httpResponse, body) {
+         if (err) {
+             console.error('Error:', err);
+             return;
+         }
+         console.log(JSON.parse(body));
+     })
+     */
+
+    const accountSid = 'AC518dd22f4ab34aff1b7a8eb966782a9e';
+    const authToken = 'b171bcdea52d0240be052dadea301d55';
+    const client = require('twilio')(accountSid, authToken);
+
+    client.messages
+        .create({
+            body: 'alert from meteo?',
+            from: '(701) 401-5836',
+            to: '+250785115074'
+        })
+        .then(message => console.log(message.sid))
+        .done();
 }
 
-sendSms()
+sendTechnicalSms()

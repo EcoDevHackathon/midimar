@@ -26,6 +26,11 @@ router.get('/registerCommunication', function(req, res) {
         res.render('pages/registerCommunication');
     });
 
+    //route for sending meteo alert
+router.get('/RainfallAlert', function(req, res) {
+ 
+    res.render('pages/RainfallAlert');
+});
 router.get('/', function(req, res) {
     user = req.session;
     user.username;

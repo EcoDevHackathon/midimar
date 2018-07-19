@@ -1,0 +1,210 @@
+.icon {
+	display: inline-block;
+	margin: 2px;
+	height: 20px;
+	width: 20px;
+	background-color: #ccc;
+}
+
+/* ICONS */
+.icon-cae {
+	background: url('../../images/disease.png') center center no-repeat;
+	background-size: 20px 20px;
+
+}
+.icon-floods{
+	background: url('../images/floods.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-drought{
+	background: url('../images/drought.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-landConflict{
+	background: url('../images/cae.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-rivers{
+	background: url('../images/rivers.png') center center no-repeat;
+	background-size: 20px 4px;
+}
+.icon-roads{
+	background: url('../images/roads.png') center center no-repeat;
+	background-size: 20px 4px;
+}
+.icon-protectedArea{
+	background: url('../images/protectedArea.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-waterBody{
+	background: url('../images/waterBody.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-pestInfestation{
+	background: url('../images/pestInfestation.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-fire{
+	background: url('../images/fire.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-ed{
+	background: url('../images/ed.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-wind{
+	background: url('../images/wind.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-theft{
+	background: url('../images/theft.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-school{
+	background: url('../images/school.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-hc{
+	background: url('../images/hc.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-ls{
+	background: url('../images/ls.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-roadAccident{
+	background: url('../images/roadAccident.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-deforestation
+{
+	background: url('../images/deforestation.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-wetlands
+{
+	background: url('../images/wetlands.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-mine
+{
+	background: url('../images/mine.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-rain
+{
+	background: url('../images/rain.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-disease
+{
+	background: url('../images/disease.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.icon-flood
+{
+	background: url('../images/flood.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+/* MARKERS */
+.leaflet-marker-icon {
+	padding: 2px;
+	text-align: center;
+}
+.marker-cae {
+	background: url('../images/disease.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+
+.marker-floods {
+	background: url('../images/floods.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-boundary {
+	background: url('../images/caeBlue.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-drought {
+	background: url('../images/drought.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-landConflict {
+	background: url('../images/cae.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-rivers {
+	background: url('../images/rivers.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-roads {
+	background: url('../images/roads.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-protectedArea {
+	background: url('../images/protectedArea.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-waterBody {
+	background: url('../images/waterBody.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-pestInfestation {
+	background: url('../images/pestInfestation.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-fire {
+	background: url('../images/fire.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-ed {
+	background: url('../images/ed.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-wind {
+	background: url('../images/wind.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-theft {
+	background: url('../images/theft.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-school {
+	background: url('../images/school.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-hc {
+	background: url('../images/hc.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-ls {
+	background: url('../images/ls.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-roadAccident {
+	background: url('../images/roadAccident.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-deforestation {
+	background: url('../images/deforestation.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-wetlands {
+	background: url('../images/wetlands.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-mine {
+	background: url('../images/mine.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-rain {
+	background: url('../images/rain.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-disease {
+	background: url('../images/disease.png') center center no-repeat;
+	background-size: 20px 20px;
+}
+.marker-flood {
+	background: url('../images/flood.png') center center no-repeat;
+	background-size: 20px 20px;
+}

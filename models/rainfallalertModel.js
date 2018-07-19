@@ -1,11 +1,11 @@
 /**
- * Author Jeannette Mukamana Bayi
+ * Author Jeannette Mukamana Bayi 2018 7/July/2018
  */
 
 var schema = require('../middleware/pg_dbschema.js');
 
 "use strict"
-class CommunicationModel {
+class rainfallAlertModel {
     constructor(email, phone, communicationMode, disaster, level, place, language) {
         this.email = email;
         this.phone = phone;
@@ -39,27 +39,20 @@ class CommunicationModel {
     }
 
     getLanguage() {
-        return this.languguage;
+        return this.language;
     }
 
     toString() {
-    
-        return `${this.email}, ${this.phone}, ${this.communicationMode}, ${this.disaster}, ${this.level},${this.place}, ${this.languguage}}`;
+        return `${this.email}, ${this.phone},${this.communicationMode}, ${this.disaster}, ${this.level}, ${this.language}`;
     }
 
-    registerCommunicationModel() {
-        console.log("logs in models");
-            schema.registerCommunication(this);
+    registerRainfallAlert (){
+        schema.registerRainfallAlert(this);
     }
-
 }
 
+module.exports = rainfallAlertModel;
 
-//module.exports.registerCommunicationModel = async function registerCommunicationModel() {
-  //  console.log("logs in models");
-      //  schema.registerCommunication(this);
-//}
-module.exports = CommunicationModel
 
 
 

@@ -6,7 +6,7 @@ var request = require('request');
 module.exports.sendRainfallAlert  = async function sendRainfallAlert(alertType, startExpectedTime, endExpectedTime,  description, regions, alertSeverity,alertId, date, callback) {
     console.log("controller......");
     var rainfallAlert = new rainfallalertModel(alertType, startExpectedTime, endExpectedTime,  description, regions, alertSeverity, alertId, date);
-    rainfallAlert.registerRainfallAlert();
+    rainfallAlert.registerRainfallAlert(callback);
 }
 
 //sendRainfallAlert('rodger@gmail.com', '873757575', 'email', 'fire', 3, 'Butare', 'english');

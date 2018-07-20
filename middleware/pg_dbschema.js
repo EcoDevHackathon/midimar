@@ -60,8 +60,29 @@ module.exports.registerRainfallAlert = async function (rainfallAlertModel, callb
 
       if (err) {
         console.log(err.stack)
+        callback(err);
       } else {
-        console.log('data saved successfully');
+        callback('data saved successfully');
       }
     })
+}
+
+//getting all disasters
+module.exports.getDisasters = async function getDisasters(callback) {
+  const query = client.query('SELECT * FROM public.disaster_history', (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+       results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("disasters????", results);
+        callback(err, result)
+     });
+
+    }
+
+  });
 }

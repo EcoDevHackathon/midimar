@@ -14,6 +14,7 @@ const urlencoded = bodyParser.urlencoded({ extended: false });
 const jsonParser = bodyParser.json();
 var data = {};
 const rainfallAlertController = require('./controllers/rainfallAlertController.js');
+const DisastersController = require('./controllers/DisastersController.js');
 
 //route for registering commmunication
 router.get('/registerCommunication', function (req, res) {
@@ -59,16 +60,27 @@ router.get('/visualisation', function (req, res) {});
 
         //rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date (req.body.startExpectedTime).getTime() ,  new Date (req.body.endExpectedTime).getTime(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(req.body.date).getTime(), (err, result) => {
             
-            rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date(),  new Date(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(), (err, result) => {
+            rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date(),  new Date(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(), ( result, err) => {
             if (err) {
-                res.status(400)
+                res.status(400).json(err)
     
             } else {
-                res.status(200).json(res);
+                res.status(200).json(result);
             }
         });
     });
 
+    router.get('/disasters/', jsonParser, function(req, res) {
+        console.log("routes.. disasters....");     
+            DisastersController.getDisasters(( err, results ) => {
+            if (err) {
+                res.status(400).json(err)
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    });
+ 
 //default  home route 
 router.get('/', function (req, res) { res.render('pages/home'); });
 module.exports = router

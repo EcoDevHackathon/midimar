@@ -21,7 +21,89 @@ var ERModel
 var user;
 
 //route for registering commmunication
-router.get('/registerCommunication', function (req, res) {res.render('pages/registerCommunication')});
+router.get('/registerCommunication', function(req, res) {
+ 
+        res.render('pages/registerCommunication');
+    });
+
+    //route for sending meteo alert
+router.get('/alert', function(req, res) {
+ 
+    res.render('pages/alert');
+});
+
+//route for sending meteo alert
+router.get('/map', function(req, res) {
+ 
+    res.render('pages/map');
+});
+router.get('/', function(req, res) {
+    user = req.session;
+    user.username;
+    user.password;
+    if (!user.username) {
+        res.render('pages/home');
+    }
+});
+
+router.post('/registerCommunication/', jsonParser, function(req, res) {
+    const request={name:req.body.username, email: req.body.email, phone:req.body.phone, com:req.body.choiceCom,
+         disaster:req.body.choiceDisaster, level:req.body.choiceLevel,  place:req.body.place, language:req.body.language} 
+       // if (err) {
+           // res.status(400)
+
+       // } else {
+           // res.status(200).json(res);
+       // }
+   console.log(request);
+});
+
+router.get('/search/announcements', function(req, res) {
+    InforSearchingController.getSearchesInAnnouncements(req.query, function(err, result) {
+        if (err) {
+            res.status(404)
+        } else {
+            res.status(200).json(result)
+
+        }
+    })
+})
+
+
+router.get('/search/citizens', function(req, res) {
+    InforSearchingController.getUsersByCriteria(req.query, function(err, result) {
+        if (err) {
+            res.status(404);
+        } else {
+            res.status(200).json(result)
+        }
+    })
+});
+
+router.get('/search/publicMessages', function(req, res) {
+    user = req.session;
+    InforSearchingController.getSearchesInPublicMessages(req.query, function(err, result) {
+        if (err) {
+            res.status(404);
+        } else {
+            res.status(200).json(result)
+
+        }
+    })
+});
+
+router.get('/search/privateMessages', function(req, res) {
+    user = req.session;
+    InforSearchingController.getSearchesInPrivateMessages(req.query, function(err, result) {
+        if (err) {
+            res.status(404);
+        } else {
+            res.status(200).json(result)
+        }
+    })
+
+    res.render('pages/registerCommunication');
+});
 //route for visualisation
 router.get('/visualisation', function (req, res) { res.render('pages/registerCommunication')});
     //route for sending meteo alert

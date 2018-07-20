@@ -1,0 +1,149 @@
+<!-- the header code resides in partials header.html-->
+<% include ../partials/header %>
+
+  <div class="container">
+
+    <form class="well form-horizontal" action=" " method="post" id="contact_form">
+      <fieldset>
+
+        <!-- Form Name -->
+        <legend>Fill the alert form with respective data</legend>
+
+         <!-- Text input-->
+
+
+       
+         <div class="form-group">
+          <label class="col-md-4 control-label">Alert Type</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-pencil"></i>
+              </span>
+              <input name="alertType" placeholder="Example: rainfall" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Province</label>
+            <div class="col-md-4 selectContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <input name="province" placeholder="Province" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+        
+
+        <!-- Text input-->
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">District</label>
+          <div class="col-md-4 selectContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-home"></i>
+              </span>
+              <input name="district" placeholder="district" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+      
+
+      <!-- Text input-->
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Sector</label>
+          <div class="col-md-4 selectContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-home"></i>
+              </span>
+              <input name="sector" placeholder="sector" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+      
+
+      <!-- Text input-->
+
+
+       
+        <div class="form-group">
+          <label class="col-md-4 control-label">Expected Time</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </span>
+              <input name="time" placeholder="yyyy/mm/dd/" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Severity</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-fire"></i>
+              </span>
+              <select name="severity" class="form-control selectpicker">
+                <option value=" ">Select one</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Description</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyhicon-star"></i>
+              </span>
+              <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-warning">Send
+              <span class="glyphicon glyphicon-send"></span>
+            </button>
+          </div>
+        </div>
+
+        
+        
+
+      </fieldset>
+    </form>
+  </div>
+  </div>
+  <!-- /.container -->
+  <!-- the footer code resides in partials header.html-->
+  <% include ../partials/footer %>

@@ -27,9 +27,15 @@ router.get('/registerCommunication', function(req, res) {
     });
 
     //route for sending meteo alert
-router.get('/RainfallAlert', function(req, res) {
+router.get('/alert', function(req, res) {
  
-    res.render('pages/RainfallAlert');
+    res.render('pages/alert');
+});
+
+//route for sending meteo alert
+router.get('/map', function(req, res) {
+ 
+    res.render('pages/map');
 });
 router.get('/', function(req, res) {
     user = req.session;

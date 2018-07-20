@@ -21,19 +21,11 @@ var ERModel
 var user;
 
 //route for registering commmunication
-router.get('/registerCommunication', function (req, res) {
-
-    res.render('pages/registerCommunication');
-});
+router.get('/registerCommunication', function (req, res) {res.render('pages/registerCommunication')});
 //route for visualisation
-router.get('/visualisation', function (req, res) {
-
+router.get('/visualisation', function (req, res) { res.render('pages/registerCommunication')});
     //route for sending meteo alert
-    router.get('/RainfallAlert', function (req, res) {
-
-        res.render('pages/RainfallAlert');
-    });
-
+router.get('/alert', function (req, res) { res.render('pages/alert'); });
 
     router.post('/registerCommunication/', jsonParser, function (req, res) {
         const request = {
@@ -48,7 +40,7 @@ router.get('/visualisation', function (req, res) {
         // }
         console.log(request);
     });
-});
+
 
 //default  home route 
 router.get('/', function (req, res) { res.render('pages/home'); });

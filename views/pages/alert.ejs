@@ -1,0 +1,177 @@
+<!-- the header code resides in partials header.html-->
+<% include ../partials/header %>
+
+  <div class="container">
+
+    <form class="well form-horizontal" action=" " method="post" id="contact_form">
+      <fieldset>
+
+        <!-- Form Name -->
+        <legend>Fill the alert form with respective data</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">District</label>
+          <div class="col-md-4 selectContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-list"></i>
+              </span>
+              <select name="choiceDisaster" class="form-control selectpicker">
+                <option value=" ">select a District</option>
+                <option>Gasabo</option>
+                <option>Kicukiro</option>
+                <option>Nyarugenge</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Text input-->
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Rain Intensity</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-envelope"></i>
+              </span>
+              <input name="intensity" placeholder="rain intensity" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Expected date</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-earphone"></i>
+              </span>
+              <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Description</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-list"></i>
+              </span>
+              <select name="choiceCom" class="form-control selectpicker">
+                <option value=" ">select a choice</option>
+                <option>Email</option>
+                <option>SMS</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Disaster</label>
+          <div class="col-md-4 selectContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-list"></i>
+              </span>
+              <select name="choiceDisaster" class="form-control selectpicker">
+                <option value=" ">select a disaster</option>
+                <option>Rain storm</option>
+                <option>Flood</option>
+                <option>Drought</option>
+                <option>Land slide</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Select Basic -->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Level</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-list"></i>
+              </span>
+              <select name="choiceLevel" class="form-control selectpicker">
+                <option value=" ">select a disaster level</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>Severe</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Place</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-home"></i>
+              </span>
+              <input name="place" placeholder="place" class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Language</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-list"></i>
+              </span>
+              <select name="language" class="form-control selectpicker">
+                <option value=" ">select a language</option>
+                <option>Kinyarwanda</option>
+                <option>English</option>
+                <option>French</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-warning" id="postAlert">Send
+              <span class="glyphicon glyphicon-send"></span>
+            </button>
+          </div>
+        </div>
+
+
+
+
+      </fieldset>
+    </form>
+  </div>
+  </div>
+  <!-- /.container -->
+  <!-- the footer code resides in partials header.html-->
+  <% include ../partials/footer %>

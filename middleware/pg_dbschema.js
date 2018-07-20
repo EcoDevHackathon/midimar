@@ -46,18 +46,17 @@ function selectAdministratorEmail() {
 
 //register rainfall Alert Model into the database
 module.exports.registerRainfallAlert = async function (rainfallAlertModel, callback) {
-  var email = communicationMode.getEmail();
-  var phonenumber = communicationMode.getPhone();
-  var communicationchoice = communicationMode.getCommunicationMode();
-  var disastertype = communicationMode.getDisaster();
-  var disasterlevel = communicationMode.getLevel();
-  var username = "roger";
-  var place = communicationMode.getPlace();
-  var roles = "admin";
-  var language = communicationMode.getLanguage();
+  var alertType = rainfallAlertModel.getalertType();
+  var startExpectedTime = rainfallAlertModel.getstartExpectedTime();
+  var endExpectedTime = rainfallAlertModel.getendExpectedTime();
+  var description = rainfallAlertModel.getdescription();
+  var regions = rainfallAlertModel.getregions();
+  var alertSeverity = rainfallAlertModel.getalertSeverity();
+  var currentDate = rainfallAlertModel.getcurrentDate();
+  var alertId = rainfallAlertModel.getalertId();
 
-  client.query('INSERT INTO public.communication(email,phonenumber,communicationchoice,disastertype,disasterlevel,username,place,roles,languages)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',
-    [email, phonenumber, communicationchoice, disastertype, disasterlevel, username, place, roles, language], (err, res) => {
+  client.query('INSERT INTO public.rainfall_alert(alert_type,excepected_startdate,excepected_enddate,recorded_date,description,severity,alert_id)VALUES($1,$2,$3,$4,$5,$6,$7)',
+    [alertType, startExpectedTime, endExpectedTime, currentDate, description, alertSeverity, alertId], (err, res) => {
 
       if (err) {
         console.log(err.stack)

@@ -6,47 +6,54 @@ var schema = require('../middleware/pg_dbschema.js');
 
 "use strict"
 class rainfallAlertModel {
-    constructor(email, phone, communicationMode, disaster, level, place, language) {
-        this.email = email;
-        this.phone = phone;
-        this.communicationMode = communicationMode;
-        this.disaster = disaster;
-        this.level = level;
-        this.place = place;
-        this.language = language;
+    constructor( alertType, startExpectedTime, endExpectedTime,  description, regions, alertSeverity, alertId, currentDate) {
+        this.alertType = alertType;
+        this.startExpectedTime = startExpectedTime;
+        this.endExpectedTime = endExpectedTime;
+        this.description = description;
+        this.regions = regions;
+        this.alertSeverity = alertSeverity;
+        this.alertId = alertId;
+        this.currentDate = currentDate;
+        
     }
 
-    getEmail() {
-        return this.email;
+    getalertType() {
+        return this.alertType;
     }
-    getPhone() {
-        return this.phone;
+    getstartExpectedTime() {
+        return this.startExpectedTime;
     }
-    getCommunicationMode() {
-        return this.communicationMode;
-    }
-
-    getDisaster() {
-        return this.disaster;
+    getendExpectedTime() {
+        return this.endExpectedTime;
     }
 
-    getLevel() {
-        return this.level;
+    getdescription() {
+        return this.description;
     }
 
-    getPlace() {
-        return this.place;
+    getregions() {
+        return this.regions;
     }
 
-    getLanguage() {
-        return this.language;
+    getalertSeverity() {
+        return this.alertSeverity;
     }
 
+    
+    getalertId() {
+        return this.alertId;
+    }
+
+    getcurrentDate() {
+        return this.currentDate;
+    }
     toString() {
-        return `${this.email}, ${this.phone},${this.communicationMode}, ${this.disaster}, ${this.level}, ${this.language}`;
+        return `${this.alertType}, ${this.startExpectedTime},${this.endExpectedTime}, ${this.description}, ${this.regions}, ${this.alertSeverity}`;
     }
 
     registerRainfallAlert (){
+        console.log("models......");
         schema.registerRainfallAlert(this);
     }
 }

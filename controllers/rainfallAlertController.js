@@ -1,13 +1,27 @@
 
 "use strict"
-var rainfallAlertControllerModel = require('../models/rainfallalertModel.js');
+var rainfallalertModel = require('../models/rainfallalertModel.js');
 var request = require('request');
 
-async function registerRainfallAlert(email, phone, communicationMode, disaster, level, place, language, callback) {
-    var rainfallAlertController = new rainfallAlertControllerModel(email, phone, communicationMode, disaster, level, place, language);
-    rainfallAlertController.registerRainfallAlert();
+module.exports.sendRainfallAlert  = async function sendRainfallAlert(alertType, startExpectedTime, endExpectedTime,  description, regions, alertSeverity,alertId, date, callback) {
+    console.log("controller......");
+    var rainfallAlert = new rainfallalertModel(alertType, startExpectedTime, endExpectedTime,  description, regions, alertSeverity, alertId, date);
+    rainfallAlert.registerRainfallAlert();
 }
 
-registerRianfallAlert('rodger@gmail.com', '873757575', 'email', 'fire', 3, 'Butare', 'english');
+//sendRainfallAlert('rodger@gmail.com', '873757575', 'email', 'fire', 3, 'Butare', 'english');
 
+
+//send
+
+//sesma
+//map
+//save
+//
+
+
+async function sendMessage(msg) {
+
+
+}
 

@@ -1,0 +1,7 @@
+./vscode
+/node_modules/*
+/node_modules/.bin
+/coverage/*
+package-lock.json
+./coverage
+/coverage

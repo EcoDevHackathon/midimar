@@ -1,0 +1,8 @@
+ INSERT INTO
+  public.disaster_history 
+ SELECT 
+disaster_type,province,district,sector,recorded_date,specific_location,deaths,injured,missing,houses_destroyed,houses_damaged,directly_affected,relocated,evacuated,losses_usd,losses_local,damages_crops_hectares,lost_cattle,damages_roads_meters,description,data_source
+ FROM
+ json_populate_record(NULL::disaster_history, 
+	
+'{"disater_type": "RAINSTORM", "province": "Southern Province", "district": "Kamonyi", "sector": "Ngamba", "date": "2016/12/14", "specific_location": "", "deaths": 0, "injured": 0, "missing": 0, "houses_destroyed": 0, "houses_damaged": 2, "directly_affected": 0, "indirectly_affected": 0, "relocated": 0, "evacuated": 0, "losses_usd": 0, "losses_local": 0, "damages_crops_hectares": 0, "lost_cattle": 0, "damages_roads_meters": 0, "description": "", "data_source": ""}')

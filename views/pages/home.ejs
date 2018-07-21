@@ -1,51 +1,3 @@
-<<<<<<< HEAD
-<!-- the header code resides in partials header.html-->
-<% include ../partials/header %>
-
-    <body class="keen-dashboard" style="padding-top: 70px;">
-
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="navbar-brand" href="./" style="color:white">RDACS
-                    </a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="join" style="color:white">Home</a>
-                        </li>
-                        <li>
-                            <a href="alert" style="color:white">Meteo Data Entry</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:white">MIDIMAR Data Entry</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:white">Alerts</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:white">Send SMS</a>
-                        </li>
-                        <li>
-                            <a href="registerCommunication" style="color:white">Receive Disaster Warning</a>
-                        </li>
-                        
-                        <li>
-                            <a href="#" style="color:white">Technical Support</a>
-                        </li>
-                    </ul>
-                </div>
-=======
 <!doctype html>
 <html lang="en">
 
@@ -110,7 +62,6 @@
             <div class="lh-100">
                 <h6 class="mb-0 text-white lh-100">Disaster Alert And Coordination System.2018</h6>
 
->>>>>>> 4c772ad83487dff45b002606c5bd0979f82713ae
             </div>
         </div>
 
@@ -156,81 +107,96 @@
 
 <!--script to load  alerts-->
 <script>
-function loadAlerts(){
-    console.log("Hello, World!");
+    function loadCoordinates() {
+    $.ajax({
+        type: 'GET',
+        contentType: 'application/json',
+        url: '/coordinates',
+        success: function (response) {
+            //console.log(response)
+            
+        mapboxgl.accessToken = 'pk.eyJ1IjoibmF5ZWJhcmUiLCJhIjoiY2pqdWUzaWJwMHNtcjN3bzZhbW10azQ5dyJ9.yw9uCLbl6S5YFIiGjZU0hg';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    //center: [response[0].longitude, response[0].latitude]
+    zoom: 7.15
+});
+
+map.on('load', function () {
+    // Add a layer showing the places.
+    map.addLayer({
+        "id": "places",
+        "type": "symbol",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Full Report</strong><p><a href=\"fullreport\" target=\"_blank\" title=\"Opens in a new window\">Full Report</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
+                        "icon": "theatre"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [30.0430063, -1.9408518]
+                    }
+
+
+                }]
+            }
+        },
+        "layout": {
+            "icon-image": "{icon}-15",
+            "icon-allow-overlap": true
+        }
+    });
+
+    // When a click event occurs on a feature in the places layer, open a popup at the
+    // location of the feature, with description HTML from its properties.
+    map.on('click', 'places', function (e) {
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var description = e.features[0].properties.description;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+    });
+
+    // Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'places', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'places', function () {
+        map.getCanvas().style.cursor = '';
+    });
+});
+        }
+    });
 }
 </script>
 
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoibmF5ZWJhcmUiLCJhIjoiY2pqdWUzaWJwMHNtcjN3bzZhbW10azQ5dyJ9.yw9uCLbl6S5YFIiGjZU0hg';
-
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            center: [29.4832771, -2.1417864],
-            zoom: 7.15
-        });
-
-        map.on('load', function () {
-            // Add a layer showing the places.
-            map.addLayer({
-                "id": "places",
-                "type": "symbol",
-                "source": {
-                    "type": "geojson",
-                    "data": {
-                        "type": "FeatureCollection",
-                        "features": [{
-                            "type": "Feature",
-                            "properties": {
-                                "description": "<strong>Full Report</strong><p><a href=\"fullreport\" target=\"_blank\" title=\"Opens in a new window\">Full Report</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
-                                "icon": "theatre"
-                            },
-                            "geometry": {
-                                "type": "Point",
-                                "coordinates": [30.0430063, -1.9408518]
-                            }
+        
+//get the alerts data
 
 
-                        }]
-                    }
-                },
-                "layout": {
-                    "icon-image": "{icon}-15",
-                    "icon-allow-overlap": true
-                }
-            });
-
-            // When a click event occurs on a feature in the places layer, open a popup at the
-            // location of the feature, with description HTML from its properties.
-            map.on('click', 'places', function (e) {
-                var coordinates = e.features[0].geometry.coordinates.slice();
-                var description = e.features[0].properties.description;
-
-                // Ensure that if the map is zoomed out such that multiple
-                // copies of the feature are visible, the popup appears
-                // over the copy being pointed to.
-                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                }
-
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(description)
-                    .addTo(map);
-            });
-
-            // Change the cursor to a pointer when the mouse is over the places layer.
-            map.on('mouseenter', 'places', function () {
-                map.getCanvas().style.cursor = 'pointer';
-            });
-
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'places', function () {
-                map.getCanvas().style.cursor = '';
-            });
-        });
     </script>
+    <script>
+    loadCoordinates()
+</script>
 </body>
 
 </html>

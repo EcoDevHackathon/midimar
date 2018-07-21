@@ -53,19 +53,6 @@ Setting the static folder
 app.use(express.static('public'));
 
 
-/*
-Defining the server port and socket
-*/
-function start() {
-    // routes.setup(app);
-    app.use('/', routes);
-    var port = process.env.PORT || 8000;
-    server.listen(port, function () {
-        console.log('Server listening at port %d', port);
-    });
-
-}
-start()
 
 
 

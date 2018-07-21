@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Disaster Alert System </title>
+    <title>Disaster Alert And Coordination System </title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -19,12 +19,13 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
         crossorigin="" />
-        <!-- Make sure you put this AFTER Leaflet's CSS -->
-<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="crossorigin="">
-</script>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+        crossorigin="">
+        </script>
 
-<script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body class="bg-light">
@@ -58,10 +59,9 @@
 
     <main role="main" class="container">
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-            <img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
             <div class="lh-100">
-                <h6 class="mb-0 text-white lh-100">Bootstrap</h6>
-                <small>Since 2011</small>
+                <h6 class="mb-0 text-white lh-100">Disaster Alert And Coordination System.2018</h6>
+
             </div>
         </div>
 
@@ -74,38 +74,21 @@
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">Previous Alerts</h6>
             <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Full Name</strong>
-                        <a href="#">Follow</a>
-                    </div>
-                    <span class="d-block">@username</span>
+                <table class="table table-hover" id="alerts">
+                    <thead>
+                      <tr>
+                        <th scope="col">Alert</th>
+                        <th scope="col">Sector</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Severity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     
+                    </tbody>
+                  </table>
                 </div>
             </div>
-            <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Full Name</strong>
-                        <a href="#">Follow</a>
-                    </div>
-                    <span class="d-block">@username</span>
-                </div>
-            </div>
-            <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Full Name</strong>
-                        <a href="#">Follow</a>
-                    </div>
-                    <span class="d-block">@username</span>
-                </div>
-            </div>
-            <small class="d-block text-right mt-3">
-                <a href="#">All suggestions</a>
-            </small>
         </div>
     </main>
 
@@ -119,18 +102,26 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/holder.min.js"></script>
     <script src="../js/offcanvas.js"></script>
+    <script src="../js/jquerymin.js"></script>
+    <script src="../js/clientSide.js"></script>
 
-
+<!--script to load  alerts-->
 <script>
+function munezero(){
+    console.log("Hello, World!");
+}
+</script>
+
+    <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibmF5ZWJhcmUiLCJhIjoiY2pqdWUzaWJwMHNtcjN3bzZhbW10azQ5dyJ9.yw9uCLbl6S5YFIiGjZU0hg';
-        
+
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
-            center: [29.4832771,-2.1417864],
+            center: [29.4832771, -2.1417864],
             zoom: 7.15
         });
-        
+
         map.on('load', function () {
             // Add a layer showing the places.
             map.addLayer({
@@ -150,8 +141,8 @@
                                 "type": "Point",
                                 "coordinates": [30.0430063, -1.9408518]
                             }
-                        
-                    
+
+
                         }]
                     }
                 },
@@ -160,37 +151,37 @@
                     "icon-allow-overlap": true
                 }
             });
-        
+
             // When a click event occurs on a feature in the places layer, open a popup at the
             // location of the feature, with description HTML from its properties.
             map.on('click', 'places', function (e) {
                 var coordinates = e.features[0].geometry.coordinates.slice();
                 var description = e.features[0].properties.description;
-        
+
                 // Ensure that if the map is zoomed out such that multiple
                 // copies of the feature are visible, the popup appears
                 // over the copy being pointed to.
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
-        
+
                 new mapboxgl.Popup()
                     .setLngLat(coordinates)
                     .setHTML(description)
                     .addTo(map);
             });
-        
+
             // Change the cursor to a pointer when the mouse is over the places layer.
             map.on('mouseenter', 'places', function () {
                 map.getCanvas().style.cursor = 'pointer';
             });
-        
+
             // Change it back to a pointer when it leaves.
             map.on('mouseleave', 'places', function () {
                 map.getCanvas().style.cursor = '';
             });
         });
-        </script>
+    </script>
 </body>
 
 </html>

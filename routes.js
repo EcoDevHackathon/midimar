@@ -22,6 +22,11 @@ router.get('/registerCommunication', function (req, res) { res.render('pages/reg
 router.get('/alert', function (req, res) { res.render('pages/alert'); });
 //route for full report'
 router.get('/fullreport', function (req, res) { res.render('pages/fullreport'); });
+//route for getting the alerts
+var customer = {};
+
+
+router.get('/alerts', function (req, res) {  res.send(data); });
 
 //route for sending meteo alert
 router.get('/map', function (req, res) { res.render('pages/map'); });

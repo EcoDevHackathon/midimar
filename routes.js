@@ -116,7 +116,7 @@ router.get('/disasters/', jsonParser, function (req, res) {
             if (err) {
                 res.status(400).json(err)
             } else {
-                res.status(200).json(results.rows[0].description);
+                res.status(200).json(results.rows[0]);
             }
         });
     });
@@ -134,6 +134,10 @@ router.get('/coordinates/', jsonParser, function (req, res) {
     });
 });
 
+//route for full report
+router.get('/fullreport', function (req, res) { res.render('pages/fullreport'); });
+
 //default  home route 
 router.get('/', function (req, res) { res.render('pages/home'); });
+
 module.exports = router

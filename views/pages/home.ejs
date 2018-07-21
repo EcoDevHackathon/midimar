@@ -38,16 +38,16 @@
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Alerts</a>
+                    <a class="nav-link" href="/alerts">Alerts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Enter Meteo Alert</a>
+                    <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Disseminate Information</a>
+                    <a class="nav-link" href="registerCommunication">Disseminate Information</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Receive Disaster Warning</a>
@@ -111,16 +111,16 @@
     $.ajax({
         type: 'GET',
         contentType: 'application/json',
-        url: '/coordinates',
+        url: '/alerts',
         success: function (response) {
-            //console.log(response)
+            console.log(response)
             
         mapboxgl.accessToken = 'pk.eyJ1IjoibmF5ZWJhcmUiLCJhIjoiY2pqdWUzaWJwMHNtcjN3bzZhbW10azQ5dyJ9.yw9uCLbl6S5YFIiGjZU0hg';
 
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
-    center: [response[0].longitude, response[0].latitude],
+    center: [response.longitude, response.latitude],
     zoom: 7.15
 });
 
@@ -136,12 +136,12 @@ map.on('load', function () {
                 "features": [{
                     "type": "Feature",
                     "properties": {
-                        "description": "<strong>Full Report</strong><p><a href=\"fullreport\" target=\"_blank\" title=\"Opens in a new window\">Full Report</a>'"+ response[0].sector+"' </p>",
+                        "description": "<h6>'"+ response.severity +" '"+ response.alert_type +" '"+ response.name +" '"+ response.excepected_startdate +"'</h6><p><a href=\"fullreport\" target=\"_blank\" title=\"Opens in a new window\">Full Report</a>  '"   + response.description  +  "' </p>",
                         "icon": "theatre"
                     },
                     "geometry": {
                         "type": "Point",
-                        "coordinates": [response[0].longitude, response[0].latitude]
+                        "coordinates": [response.longitude, response.latitude]
                     }
 
 

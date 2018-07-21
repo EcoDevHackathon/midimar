@@ -166,7 +166,7 @@ router.get('/visualisation', function (req, res) {});
             if (err) {
                 res.status(400).json(err)
             } else {
-                res.status(200).json(results);
+                res.status(200).json(results.rows[0].excepected_startdate);
             }
         });
     });

@@ -1,13 +1,40 @@
 
 "use strict"
-var rainfallAlertControllerModel = require('../models/rainfallalertModel.js');
+var rainfallalertModel = require('../models/rainfallalertModel.js');
 var request = require('request');
 
-async function registerRainfallAlert(email, phone, communicationMode, disaster, level, place, language, callback) {
-    var rainfallAlertController = new rainfallAlertControllerModel(email, phone, communicationMode, disaster, level, place, language);
-    rainfallAlertController.registerRainfallAlert();
+module.exports.sendRainfallAlert  = async function sendRainfallAlert(alertType, startExpectedTime, endExpectedTime,  description, alertSeverity,alertId, date,rainfalAmount, rainfallIntensity,district, sector, callback) {
+    console.log("controller......");
+    var rainfallAlert = new rainfallalertModel(alertType, startExpectedTime, endExpectedTime,  description, alertSeverity, alertId, date, rainfalAmount, rainfallIntensity, district, sector);
+    rainfallAlert.registerRainfallAlert(callback);
+
+
 }
 
-registerRianfallAlert('rodger@gmail.com', '873757575', 'email', 'fire', 3, 'Butare', 'english');
 
+module.exports.getAlerts = function getAlerts(callback) {
+    console.log("controllers .... alerts") 
+    rainfallalertModel.getAlerts(callback);
+}
+
+module.exports.getCoordinates = function getCoordinates(callback) {
+    console.log("controllers .... coordinates") 
+    rainfallalertModel.getCoordinates(callback);
+}
+
+//sendRainfallAlert('rodger@gmail.com', '873757575', 'email', 'fire', 3, 'Butare', 'english');
+
+
+//send
+
+//sesma
+//map
+//save
+//
+
+
+async function sendMessage(msg) {
+
+
+}
 

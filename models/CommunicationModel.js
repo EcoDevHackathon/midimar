@@ -39,20 +39,27 @@ class CommunicationModel {
     }
 
     getLanguage() {
-        return this.language;
+        return this.languguage;
     }
 
     toString() {
-        return `${this.email}, ${this.phone},${this.communicationMode}, ${this.disaster}, ${this.level}, ${this.language}`;
+    
+        return `${this.email}, ${this.phone}, ${this.communicationMode}, ${this.disaster}, ${this.level},${this.place}, ${this.languguage}}`;
     }
 
     registerCommunicationModel() {
-        schema.registerCommunication(this);
+        console.log("logs in models");
+            schema.registerCommunication(this);
     }
+
 }
 
-module.exports = CommunicationModel
 
+//module.exports.registerCommunicationModel = async function registerCommunicationModel() {
+  //  console.log("logs in models");
+      //  schema.registerCommunication(this);
+//}
+module.exports = CommunicationModel
 
 
 

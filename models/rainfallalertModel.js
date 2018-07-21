@@ -6,52 +6,114 @@ var schema = require('../middleware/pg_dbschema.js');
 
 "use strict"
 class rainfallAlertModel {
-    constructor(email, phone, communicationMode, disaster, level, place, language) {
-        this.email = email;
-        this.phone = phone;
-        this.communicationMode = communicationMode;
-        this.disaster = disaster;
-        this.level = level;
-        this.place = place;
-        this.language = language;
+    constructor(alertType, startExpectedTime, endExpectedTime, description, alertSeverity, alertId, currentDate, rainfalAmount, rainfallIntensity, district, sector) {
+        this.alertType = alertType;
+        this.startExpectedTime = startExpectedTime;
+        this.endExpectedTime = endExpectedTime;
+        this.description = description;
+        this.alertSeverity = alertSeverity;
+        this.alertId = alertId;
+        this.currentDate = currentDate;
+        this.rainfalAmount = rainfalAmount;
+        this.rainfallIntensity = rainfallIntensity;
+        this.district = district;
+        this.sector = sector;
+
     }
 
-    getEmail() {
-        return this.email;
-    }
-    getPhone() {
-        return this.phone;
-    }
-    getCommunicationMode() {
-        return this.communicationMode;
+    getdistrict() {
+        return this.district;
     }
 
-    getDisaster() {
-        return this.disaster;
+    getsector() {
+        return this.sector;
     }
 
-    getLevel() {
-        return this.level;
+    getrainfalAmount() {
+        return this.rainfalAmount;
     }
 
-    getPlace() {
-        return this.place;
+    getrainfallIntensity() {
+        return this.rainfallIntensity;
     }
 
-    getLanguage() {
-        return this.language;
+    getalertType() {
+        return this.alertType;
+    }
+    getstartExpectedTime() {
+        return this.startExpectedTime;
+    }
+    getendExpectedTime() {
+        return this.endExpectedTime;
     }
 
+    getdescription() {
+        return this.description;
+    }
+
+    getalertSeverity() {
+        return this.alertSeverity;
+    }
+
+
+    getalertId() {
+        return this.alertId;
+    }
+
+    getcurrentDate() {
+        return this.currentDate;
+    }
     toString() {
-        return `${this.email}, ${this.phone},${this.communicationMode}, ${this.disaster}, ${this.level}, ${this.language}`;
+        return ` ${this.alertType}, ${this.startExpectedTime},${this.endExpectedTime}, ${this.description}, ${this.alertSeverity} ,${this.rainfalAmount}, ${this.rainfallIntensity}, ${this.district}, ${this.sector},`;
     }
 
-    registerRainfallAlert (){
-        schema.registerRainfallAlert(this);
+    registerRainfallAlert(callback) {
+        console.log("models......");
+
+        //saving the alert
+        console.log(this)
+        schema.registerRainfallAlert(this, callback);
+
+        //send the alert by Email
+        //this.sendAlertByEmail(this)
+
+        //send alre by sms
+       // this.sendAlertBySms(this)
+    }
+
+
+    sendAlertByEmail(alert) {
+        //send the alert by Email
+    }
+
+    sendAlertBySms(alert) {
+        //send the alert by Sms
+        const accountSid = 'AC518dd22f4ab34aff1b7a8eb966782a9e';
+        const authToken = 'b171bcdea52d0240be052dadea301d55';
+        const client = require('twilio')(accountSid, authToken);
+        client.messages
+            .create({
+                body: alert.toString()+'wait',
+                from: '(701) 401-5836',
+                to: '+250785115074'
+            })
+            .then(message => console.log(message.sid))
+            .done();
     }
 }
 
 module.exports = rainfallAlertModel;
+
+module.exports.getAlerts = function getAlerts(callback) {
+    console.log("models .... alerts")  
+    schema.getAlerts(callback);
+  }
+
+  module.exports.getCoordinates = function getCoordinates(callback) {
+    console.log("models .... coordinates")  
+    schema.getCoordinates(callback);
+  }
+  
 
 
 

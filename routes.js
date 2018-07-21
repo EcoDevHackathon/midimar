@@ -139,8 +139,8 @@ router.get('/visualisation', function (req, res) {});
 
         //rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date (req.body.startExpectedTime).getTime() ,  new Date (req.body.endExpectedTime).getTime(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(req.body.date).getTime(), (err, result) => {
             
-            rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date(),  new Date(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(), ( result, err) => {
-            if (err) {
+            rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date(),  new Date(), req.body.description, req.body.alertSeverity,req.body.alertId, new Date(),  req.body.rainfalAmount,  req.body.rainfallIntensity, req.body.district,  req.body.sector, ( result, err) => {
+                if (err) {
                 res.status(400).json(err)
     
             } else {
@@ -159,7 +159,29 @@ router.get('/visualisation', function (req, res) {});
             }
         });
     });
+
+    router.get('/alerts/', jsonParser, function(req, res) {
+        console.log("routes.. alerts....");     
+        rainfallAlertController.getAlerts(( err, results ) => {
+            if (err) {
+                res.status(400).json(err)
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    });
  
+    //
+    router.get('/coordinates/', jsonParser, function(req, res) {
+        console.log("routes.. coordinates....");     
+        rainfallAlertController.getCoordinates(( err, results ) => {
+            if (err) {
+                res.status(400).json(err)
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    });
 //default  home route 
 router.get('/', function (req, res) { res.render('pages/home'); });
 module.exports = router

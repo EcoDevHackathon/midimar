@@ -50,16 +50,18 @@ module.exports.registerRainfallAlert = async function (rainfallAlertModel, callb
   var startExpectedTime = rainfallAlertModel.getstartExpectedTime();
   var endExpectedTime = rainfallAlertModel.getendExpectedTime();
   var description = rainfallAlertModel.getdescription();
-  var regions = rainfallAlertModel.getregions();
   var alertSeverity = rainfallAlertModel.getalertSeverity();
   var currentDate = rainfallAlertModel.getcurrentDate();
   var alertId = rainfallAlertModel.getalertId();
-
-  client.query('INSERT INTO public.rainfall_alert(alert_type,excepected_startdate,excepected_enddate,recorded_date,description,severity,alert_id)VALUES($1,$2,$3,$4,$5,$6,$7)',
-    [alertType, startExpectedTime, endExpectedTime, currentDate, description, alertSeverity, alertId], (err, res) => {
+  var rainfalAmount = rainfallAlertModel.getrainfalAmount();
+  var rainfallIntensity = rainfallAlertModel.getrainfallIntensity();
+  var district = rainfallAlertModel.getdistrict();
+  var sector = rainfallAlertModel.getsector();
+  client.query('INSERT INTO public.rainfall_alert(alert_type, rainfall_amount, rainfall_intensity,excepected_startdate,excepected_enddate,recorded_date,description,severity,alert_id, district,sector )VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)',
+  [alertType, rainfalAmount, rainfallIntensity, startExpectedTime, endExpectedTime, currentDate, description, alertSeverity, alertId, district, sector],(err, res) => {
 
       if (err) {
-        console.log(err.stack)
+        console.log(err)
         callback(err);
       } else {
         callback('data saved successfully');
@@ -70,6 +72,46 @@ module.exports.registerRainfallAlert = async function (rainfallAlertModel, callb
 //getting all disasters
 module.exports.getDisasters = async function getDisasters(callback) {
   const query = client.query('SELECT * FROM public.disaster_history', (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+       results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("disasters????", results);
+        callback(err, result)
+     });
+
+    }
+
+  });
+}
+
+//getting alerts coordinat
+module.exports.getCoordinates = async function getCoordinates(callback) {
+  const query = client.query('SELECT * FROM public.regions', (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+       results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("coordinates????", results);
+        callback(err, result)
+     });
+
+    }
+
+  });
+}
+
+//getting all alerts
+module.exports.getAlerts = async function getAlerts(callback) {
+  const query = client.query('SELECT * FROM public.rainfall_alert', (err, result) => {
     if (err) {
       callback(err, results)
     } else {

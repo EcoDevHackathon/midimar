@@ -78,7 +78,17 @@ class rainfallAlertModel {
         //this.sendAlertByEmail(this)
 
         //send alre by sms
-       // this.sendAlertBySms(this)
+        // this.sendAlertBySms(this)
+    }
+
+    disseminate(comment, receivers, callback) {
+    
+        console.log("disseminating information......" + this);
+
+        //loop and send individually
+
+       this.sendAlertBySms(comment, receivers, this, callback)
+       
     }
 
 
@@ -86,34 +96,36 @@ class rainfallAlertModel {
         //send the alert by Email
     }
 
-    sendAlertBySms(alert) {
+    sendAlertBySms(comment, receivers, alert, callback) {
         //send the alert by Sms
         const accountSid = 'AC518dd22f4ab34aff1b7a8eb966782a9e';
         const authToken = 'b171bcdea52d0240be052dadea301d55';
         const client = require('twilio')(accountSid, authToken);
         client.messages
             .create({
-                body: alert.toString()+'wait',
+                body: alert.toString() + 'wait',
                 from: '(701) 401-5836',
-                to: '+250785115074'
+                to: "+250785115074"
             })
             .then(message => console.log(message.sid))
             .done();
+        callback('null', "sent successfull")
     }
+
 }
 
 module.exports = rainfallAlertModel;
 
 module.exports.getAlerts = function getAlerts(callback) {
-    console.log("models .... alerts")  
+    console.log("models .... alerts")
     schema.getAlerts(callback);
-  }
+}
 
-  module.exports.getCoordinates = function getCoordinates(callback) {
-    console.log("models .... coordinates")  
+
+module.exports.getCoordinates = function getCoordinates(callback) {
+    console.log("models .... coordinates")
     schema.getCoordinates(callback);
-  }
-  
+}
 
 
 

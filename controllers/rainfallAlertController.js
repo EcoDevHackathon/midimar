@@ -11,6 +11,16 @@ module.exports.sendRainfallAlert  = async function sendRainfallAlert(alertType, 
 
 }
 
+//disseminating information
+module.exports.disseminate  = async function disseminate(alertType, startExpectedTime, endExpectedTime,  description, alertSeverity,alertId, date,rainfalAmount, rainfallIntensity,district, sector, comment, receivers, callback) {
+    console.log("controller......");
+   // var rainfallAlert = new rainfallalertModel(
+    var rainfallAlert = new rainfallalertModel(alertType, startExpectedTime, endExpectedTime,  description, alertSeverity, alertId, date, rainfalAmount, rainfallIntensity, district, sector);
+    rainfallAlert.disseminate(comment, receivers, callback);
+}
+
+
+
 
 module.exports.getAlerts = function getAlerts(callback) {
     console.log("controllers .... alerts") 
@@ -22,6 +32,8 @@ module.exports.getCoordinates = function getCoordinates(callback) {
     rainfallalertModel.getCoordinates(callback);
 }
 
+//var rainfallAlert = new rainfallalertModel("alertType", "startExpectedTime", "endExpectedTime",  "description", "alertSeverity", "alertId", "date", "rainfalAmount", "rainfallIntensity", "district", "sector");
+//rainfallAlert.disseminate("comment", "+250785115074");
 //sendRainfallAlert('rodger@gmail.com', '873757575', 'email', 'fire', 3, 'Butare', 'english');
 
 

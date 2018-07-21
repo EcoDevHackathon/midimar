@@ -109,6 +109,7 @@ router.post('/alerts/', jsonParser, function (req, res) {
     });
 });
 
+//disaster route
 router.get('/disasters/', jsonParser, function (req, res) {
     console.log("routes.. disasters....");
     DisastersController.getDisasters((err, results) => {
@@ -120,18 +121,19 @@ router.get('/disasters/', jsonParser, function (req, res) {
     });
 });
 
-router.get('/alerts', jsonParser, function (req, res) {
+//alerts routes
+router.get('/alerts/', jsonParser, function (req, res) {
     console.log("routes.. alerts....");
     rainfallAlertController.getAlerts((err, results) => {
         if (err) {
             res.status(400).json(err)
         } else {
-            res.status(200).json(results.rows);
+            res.status(200).json(results.rows[0].excepected_startdate);
         }
     });
 });
 
-//
+//coordinate routes
 router.get('/coordinates/', jsonParser, function (req, res) {
     console.log("routes.. coordinates....");
     rainfallAlertController.getCoordinates((err, results) => {
@@ -142,6 +144,7 @@ router.get('/coordinates/', jsonParser, function (req, res) {
         }
     });
 });
+
 //default  home route 
 router.get('/', function (req, res) { res.render('pages/home'); });
 module.exports = router

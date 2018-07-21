@@ -101,7 +101,7 @@ module.exports.getCoordinates = async function getCoordinates(callback) {
       });
 
       query.on('end', () => {
-        console.log("coordinates????", results);
+        console.log("coordinates????", result);
         callback(err, result)
      });
 

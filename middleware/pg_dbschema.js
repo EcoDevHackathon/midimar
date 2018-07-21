@@ -58,7 +58,7 @@ module.exports.registerRainfallAlert = async function (rainfallAlertModel, callb
   var district = rainfallAlertModel.getdistrict();
   var sector = rainfallAlertModel.getsector();
   client.query('INSERT INTO public.rainfall_alert(alert_type, rainfall_amount, rainfall_intensity,excepected_startdate,excepected_enddate,recorded_date,description,severity,alert_id, district,sector )VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)',
-  [alertType, rainfalAmount, rainfallIntensity, startExpectedTime, endExpectedTime, currentDate, description, alertSeverity, alertId, district, sector],(err, res) => {
+    [alertType, rainfalAmount, rainfallIntensity, startExpectedTime, endExpectedTime, currentDate, description, alertSeverity, alertId, district, sector], (err, res) => {
 
       if (err) {
         console.log(err)
@@ -76,13 +76,13 @@ module.exports.getDisasters = async function getDisasters(callback) {
       callback(err, results)
     } else {
       query.on('row', (row) => {
-       results.push(row);
+        results.push(row);
       });
 
       query.on('end', () => {
         console.log("disasters????", results);
         callback(err, result)
-     });
+      });
 
     }
 
@@ -97,13 +97,13 @@ module.exports.getCoordinates = async function getCoordinates(callback) {
       callback(err, results)
     } else {
       query.on('row', (row) => {
-       results.push(row);
+        results.push(row);
       });
 
       query.on('end', () => {
         console.log("coordinates????", result);
         callback(err, result)
-     });
+      });
 
     }
 
@@ -112,18 +112,18 @@ module.exports.getCoordinates = async function getCoordinates(callback) {
 
 //getting all alerts
 module.exports.getAlerts = async function getAlerts(callback) {
-  const query = client.query('SELECT * FROM public.rainfall_alert', (err, result) => {
+  const query = client.query('SELECT * FROM public.rainfall_alert,regions', (err, result) => {
     if (err) {
       callback(err, results)
     } else {
       query.on('row', (row) => {
-       results.push(row);
+        results.push(row);
       });
 
       query.on('end', () => {
         console.log("disasters????", results);
         callback(err, result)
-     });
+      });
 
     }
 

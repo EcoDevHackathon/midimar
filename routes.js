@@ -17,22 +17,12 @@ const rainfallAlertController = require('./controllers/rainfallAlertController.j
 const DisastersController = require('./controllers/DisastersController.js');
 
 //route for registering commmunication
-router.get('/registerCommunication', function (req, res) {
-
-    res.render('pages/registerCommunication');
-});
+router.get('/registerCommunication', function (req, res) { res.render('pages/map'); });
 
 
 //route for sending meteo alert
 router.get('/map', function (req, res) { res.render('pages/map'); });
-router.get('/', function (req, res) {
-    user = req.session;
-    user.username;
-    user.password;
-    if (!user.username) {
-        res.render('pages/home');
-    }
-});
+
 
 router.post('/registerCommunication/', jsonParser, function (req, res) {
     const request = {
@@ -76,8 +66,6 @@ router.post('/RainfallAlert', function (req, res) {
 });
 
 
-
-
 router.post('/registerCommunication/', jsonParser, function (req, res) {
     const request = {
         name: req.body.username, email: req.body.email, phone: req.body.phone, com: req.body.choiceCom,
@@ -97,7 +85,7 @@ router.post('/alerts/', jsonParser, function (req, res) {
     console.log("routes......");
     console.log(new Date(req.body.startExpectedTime).getTime());
 
-    //rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date (req.body.startExpectedTime).getTime() ,  new Date (req.body.endExpectedTime).getTime(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(req.body.date).getTime(), (err, result) => {
+//rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date (req.body.startExpectedTime).getTime() ,  new Date (req.body.endExpectedTime).getTime(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(req.body.date).getTime(), (err, result) => {
 
     rainfallAlertController.sendRainfallAlert(req.body.alertType, new Date(), new Date(), req.body.description, req.body.alertSeverity, req.body.alertId, new Date(), req.body.rainfalAmount, req.body.rainfallIntensity, req.body.district, req.body.sector, (result, err) => {
         if (err) {
@@ -121,17 +109,18 @@ router.get('/disasters/', jsonParser, function (req, res) {
     });
 });
 
-//alerts routes
-router.get('/alerts/', jsonParser, function (req, res) {
-    console.log("routes.. alerts....");
-    rainfallAlertController.getAlerts((err, results) => {
-        if (err) {
-            res.status(400).json(err)
-        } else {
-            res.status(200).json(results.rows[0].excepected_startdate);
-        }
+//get alerts route
+    router.get('/alerts/', jsonParser, function(req, res) {
+        console.log("routes.. alerts....");     
+        rainfallAlertController.getAlerts(( err, results ) => {
+            if (err) {
+                res.status(400).json(err)
+            } else {
+                res.status(200).json(results.rows[0].description);
+            }
+        });
     });
-});
+
 
 //coordinate routes
 router.get('/coordinates/', jsonParser, function (req, res) {

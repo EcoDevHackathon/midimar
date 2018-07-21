@@ -22,9 +22,6 @@ router.get('/registerCommunication', function(req, res) {
         res.render('pages/registerCommunication');
     });
 
-
-router.get('/alerts', function (req, res) {  res.send(data); });
-
 //route for sending meteo alert
 router.get('/map', function (req, res) { res.render('pages/map'); });
 router.get('/', function (req, res) {
@@ -128,7 +125,7 @@ router.get('/visualisation', function (req, res) {});
             if (err) {
                 res.status(400).json(err)
             } else {
-                res.status(200).json(results.rows[0].excepected_startdate);
+                res.status(200).json(results.rows[0]);
             }
         });
     });

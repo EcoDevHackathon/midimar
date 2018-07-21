@@ -6,16 +6,35 @@ var schema = require('../middleware/pg_dbschema.js');
 
 "use strict"
 class rainfallAlertModel {
-    constructor(alertType, startExpectedTime, endExpectedTime, description, regions, alertSeverity, alertId, currentDate) {
+    constructor(alertType, startExpectedTime, endExpectedTime, description, alertSeverity, alertId, currentDate, rainfalAmount, rainfallIntensity, district, sector) {
         this.alertType = alertType;
         this.startExpectedTime = startExpectedTime;
         this.endExpectedTime = endExpectedTime;
         this.description = description;
-        this.regions = regions;
         this.alertSeverity = alertSeverity;
         this.alertId = alertId;
         this.currentDate = currentDate;
+        this.rainfalAmount = rainfalAmount;
+        this.rainfallIntensity = rainfallIntensity;
+        this.district = district;
+        this.sector = sector;
 
+    }
+
+    getdistrict() {
+        return this.district;
+    }
+
+    getsector() {
+        return this.sector;
+    }
+
+    getrainfalAmount() {
+        return this.rainfalAmount;
+    }
+
+    getrainfallIntensity() {
+        return this.rainfallIntensity;
     }
 
     getalertType() {
@@ -32,10 +51,6 @@ class rainfallAlertModel {
         return this.description;
     }
 
-    getregions() {
-        return this.regions;
-    }
-
     getalertSeverity() {
         return this.alertSeverity;
     }
@@ -49,20 +64,21 @@ class rainfallAlertModel {
         return this.currentDate;
     }
     toString() {
-        return `${this.alertType}, ${this.startExpectedTime},${this.endExpectedTime}, ${this.description}, ${this.regions}, ${this.alertSeverity}`;
+        return ` ${this.alertType}, ${this.startExpectedTime},${this.endExpectedTime}, ${this.description}, ${this.alertSeverity} ,${this.rainfalAmount}, ${this.rainfallIntensity}, ${this.district}, ${this.sector},`;
     }
 
     registerRainfallAlert(callback) {
         console.log("models......");
 
         //saving the alert
+        console.log(this)
         schema.registerRainfallAlert(this, callback);
 
         //send the alert by Email
-        this.sendAlertByEmail(this)
+        //this.sendAlertByEmail(this)
 
         //send alre by sms
-        this.sendAlertBySms(this)
+       // this.sendAlertBySms(this)
     }
 
 
@@ -88,6 +104,16 @@ class rainfallAlertModel {
 
 module.exports = rainfallAlertModel;
 
+module.exports.getAlerts = function getAlerts(callback) {
+    console.log("models .... alerts")  
+    schema.getAlerts(callback);
+  }
+
+  module.exports.getCoordinates = function getCoordinates(callback) {
+    console.log("models .... coordinates")  
+    schema.getCoordinates(callback);
+  }
+  
 
 
 

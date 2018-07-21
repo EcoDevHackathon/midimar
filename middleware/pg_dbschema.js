@@ -91,6 +91,7 @@ module.exports.getDisasters = async function getDisasters(callback) {
 
 //getting alerts coordinat
 module.exports.getCoordinates = async function getCoordinates(callback) {
+
   const query = client.query('SELECT * FROM public.regions', (err, result) => {
     if (err) {
       callback(err, results)

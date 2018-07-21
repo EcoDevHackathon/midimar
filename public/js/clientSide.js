@@ -15,24 +15,22 @@ $(document).ready(function () {
 //get the alerts data
 
 function loadAlerts() {
-    $data = 'micheal';
     $.ajax({
         type: 'GET',
         contentType: 'application/json',
-        url: '/alerts/',
+        url: '/alerts',
         success: function (response) {
 
             if (response == "404") {
                 alert("unable to retrieve data for alerts:" + response);
             } else {
-                var results = document.getElementById("alert");
-                for (var g = 0; g < 12; g++) {
-                    $("#alerts").append("<tr><td>" + data + "</td></tr>");
-                 console.log('tets')
+              console.log(response.rows)
+                for (var g = 0; g < response.rows.length; g++) {
+                    //$("#alerts").append("<tr><td>" + data + "</td></tr>");
+                 console.log(reponse.rows[g])
                 }
             }
         }
     });
 }
 
-loadAlerts()

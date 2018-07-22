@@ -13,7 +13,6 @@ $(document).ready(function () {
 
 
 //get the alerts data
-
 function loadAlerts() {
     $.ajax({
         type: 'GET',
@@ -68,32 +67,23 @@ function loadCoordinates() {
     })
 }
 
-loadCoordinates()
-
-var dataSet = [
-    [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800","Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800",""]
-
-];
+//loading  data using datablles
+var arr = [];
+function loadDisasterHistory() {
+    var disasterData =[];
+    $.ajax({
+        type: 'GET',
+        contentType: 'application/json',
+        url: '/disasters',
+        success: function (response) {
+             
+              //for(var y in response){
+                //console.log(response.rows[y].disaster_type)
+            disasterData.push(response);
+            }
+    
+    });
+}
  
-$(document).ready(function() {
-    $('#example').DataTable( {
-        data: dataSet,
-        columns: [
-            { title: "event" },
-            { title: "sector" },
-            { title: "date" },
-            { title: "death" },
-            { title: "injured" },
-            { title: "missing" },
-            { title: "houses destroyed" },
-            { title: "houses_damaged" },
-            { title: "relocated" },
-            { title: "evacuated" },
-            { title: "losses_usd" },
-            { title: "lost_cattle" },
-            { title: "damages_roads_meter" }
-        ]
-
-
-    } );
-} );
+loadDisasterHistory() 
+loadCoordinates()

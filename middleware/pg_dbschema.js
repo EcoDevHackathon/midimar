@@ -71,15 +71,16 @@ module.exports.registerRainfallAlert = async function (rainfallAlertModel, callb
 
 //getting all disasters
 module.exports.getDisasters = async function getDisasters(callback) {
-  const query = client.query('SELECT * FROM public.disaster_history', (err, result) => {
-    if (err) {
+  const query = client.query('SELECT disaster_type,sector,recorded_date,deaths,injured,missing,houses_destroyed,houses_damaged,relocated FROM public.disaster_history', (err, result) => {
+  if (err) {
       callback(err, results)
     } else {
       query.on('row', (row) => {
-        results.push(row);
+        results.push(jsonArray);
       });
 
       query.on('end', () => {
+      // var jsonArrayd = JSON.parse(result);
         console.log("disasters????", results);
         callback(err, result)
       });
@@ -122,6 +123,46 @@ module.exports.getAlerts = async function getAlerts(callback) {
 
       query.on('end', () => {
         console.log("disasters????", results);
+        callback(err, result)
+      });
+
+    }
+
+  });
+}
+
+//get population data
+module.exports.getPopulation = async function getPopulation(callback) {
+  const query = client.query('SELECT * FROM public.population', (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+        results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("population", results);
+        callback(err, result)
+      });
+
+    }
+
+  });
+}
+
+//get infrustructure
+module.exports.getInfrustructure = async function getInfrustructure(callback) {
+  const query = client.query('SELECT * FROM public.infrustructure', (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+        results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("infrustructure", results);
         callback(err, result)
       });
 

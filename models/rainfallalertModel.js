@@ -127,5 +127,14 @@ module.exports.getCoordinates = function getCoordinates(callback) {
     schema.getCoordinates(callback);
 }
 
+//get population data
+module.exports.getPopulation = function getPopulation(callback) {
+    console.log("models .... population")
+    schema.getPopulation(callback);
+}
 
-
+//get infrustructure data
+module.exports.getInfrustructure = function getInfrustructure(callback) {
+    console.log("models .... infrustructure")
+    schema.getInfrustructure(callback);
+}

@@ -3,7 +3,7 @@
  */
 
 var schema = require('../middleware/pg_dbschema.js');
-
+const nodemailer = require('nodemailer');
 "use strict"
 class rainfallAlertModel {
     constructor(alertType, startExpectedTime, endExpectedTime, description, alertSeverity, alertId, currentDate, rainfalAmount, rainfallIntensity, district, sector) {
@@ -88,16 +88,66 @@ class rainfallAlertModel {
         //loop and send individually
 
        this.sendAlertBySms(comment, receivers, this, callback)
+
+       //tsend email
+       this.sendAlertByEmail(this)
+
+       //get receiver phone number from database
+
+      // this.getReceiverPhoneNumber("jeannette") 
+
+      this.sendAlertByEmail(comment, receivers, this, callback)
        
+      
     }
 
 
-    sendAlertByEmail(alert) {
+    sendAlertByEmail(message) {
         //send the alert by Email
+        console.log(this)
+        nodemailer.createTestAccount((err, account) => {
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false,
+                auth: {
+                    user: 'midimaralert@gmail.com',
+                    pass: 'h0zg0Kkbupe$B3!B'
+                },
+                
+            });
+            let mailOptions= {
+                from: 'MIDIMAR DISASTER ALERT <midimaralert@gmail.com>',
+                to: 'jannekista3@gmail.com',
+                subject: 'Midimar Disaster Alert',
+                text: 'Heavy Rainfall shower',
+                html: '<b>'+message+'</b>'
+             }
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: %s', info.messageId);
+                console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+            });
+        });
+    
+
+
+    }
+
+    //getting receiver's phone number
+    getReceiverPhoneNumber(receivers) {
+        //
+        console.log("searching for receiver's phone number")
+       console.log(schema.getReceiverPhoneNumber(receivers)) ;
+        
     }
 
     sendAlertBySms(comment, receivers, alert, callback) {
         //send the alert by Sms
+
+        console.log("receivers"+receivers);
         const accountSid = 'AC518dd22f4ab34aff1b7a8eb966782a9e';
         const authToken = 'b171bcdea52d0240be052dadea301d55';
         const client = require('twilio')(accountSid, authToken);
@@ -128,4 +178,19 @@ module.exports.getCoordinates = function getCoordinates(callback) {
 }
 
 
+//
+//------------------------------------
+function getRegionFeatures( region,callback) {
+    console.log("models .... region features")
+   // schema.getRegionFeatures(function (err, result){
+
+       // getAlertSeverity( region,callback)
+   // });
+}
+
+function getAlertSeverity( region,callback) {
+    //use Roger's formula
+
+    //return the result
+}
 

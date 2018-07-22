@@ -110,9 +110,49 @@ module.exports.getCoordinates = async function getCoordinates(callback) {
   });
 }
 
+///getting users phone number
+module.exports.getReceiverPhoneNumber = async function getgetReceiverPhoneNumber(name) {
+  const query = client.query('SELECT * FROM public.receivers where official_name ='+name+' ', (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+        results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("phones????", result);
+        return  result
+      });
+
+    }
+
+  });
+}
+
 //getting all alerts
 module.exports.getAlerts = async function getAlerts(callback) {
   const query = client.query('SELECT * FROM public.rainfall_alert,regions', (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+        results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("disasters????", results);
+        callback(err, result)
+      });
+
+    }
+
+  });
+}
+
+//getting region features--------------------------------------
+module.exports.getRegionFeatures = function getCoordinates(regionName, callback) {
+  const query = client.query('SELECT * FROM regions', (err, result) => {
     if (err) {
       callback(err, results)
     } else {

@@ -69,68 +69,153 @@
             </div>
         </div>
 
-        <h4>Disaster Name and Severity Details --- Full Report</h4>
+        <h4>
+            <b id="alert_type" style="padding-left:2px"> </b>
+            <b id="sectors" style="padding-left:2px"></b>
+            <b id="severity" style="padding-left:2px"></b>
+            <b id="recorded_date" style="padding-left:2px"></b>
+        </h4>
 
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <div id="exTab2" class="container">
                 <ul class="nav nav-tabs">
                     <li class="active">
-                        <a href="#1" data-toggle="tab"><h6><b>Summary</b></h6></a>
+                        <a href="#1" data-toggle="tab">
+                            <h6>
+                                <b>Summary</b>
+                            </h6>
+                        </a>
                     </li>
                     <div id="space" style="width:6px"></div>
                     <li>
-                        <a href="#2" data-toggle="tab"><h6><b>Impact</b></h6></a>
+                        <a href="#2" data-toggle="tab">
+                            <h6>
+                                <b>Impact</b>
+                            </h6>
+                        </a>
                     </li>
                     <div id="space" style="width:6px"></div>
                     <li>
-                        <a href="#3" data-toggle="tab"><h6><b>Expert Review</b></h6></a>
+                        <a href="#3" data-toggle="tab">
+                            <h6>
+                                <b>Expert Review</b>
+                            </h6>
+                        </a>
                     </li>
                     <div id="space" style="width:6px"></div>
 
                     <li>
-                        <a href="#4" data-toggle="tab"><h6><b>Disaster History</b></h6></a>
+                        <a href="#4" data-toggle="tab">
+                            <h6>
+                                <b>Disaster History</b>
+                            </h6>
+                        </a>
                     </li>
                     <div id="space" style="width:6px"></div>
                     <li>
-                            <a href="#5" data-toggle="tab"><h6><b>Dynamic Atlas</b></h6></a>
+                        <a href="#5" data-toggle="tab">
+                            <h6>
+                                <b>Dynamic Atlas</b>
+                            </h6>
+                        </a>
                     </li>
-                    
+
 
                 </ul>
 
                 <div class="tab-content ">
                     <div class="tab-pane active" id="1">
                         <h3>Event Summary</h3>
-                        <p>This earthquake can have a medium humanitarian impact based on the Magnitude and the affected population and their vulnerability.</p>
+                        <p>
+                            <b id="description" style="padding-left:50px"></b>.</p>
                         <div class="list-group">
-                                <ul class="list-group">
-                                        <li class="list-group-item">Event Type:    <b></b></li>
-                                        <li class="list-group-item">RainFall Amount:  <b></b></li>
-                                        <li class="list-group-item">RainFall Intensity: <b></b></li>
-                                        <li class="list-group-item">Recorded Date:    <b></b></li>
-                                        <li class="list-group-item">Expectated Start Date:  <b></b></li>
-                                        <li class="list-group-item">Expectated End Date:  <b></b></li>
-                                        <li class="list-group-item">Description:  <b></b></li>
-                                        <li class="list-group-item">Severity:   <b></b></li>
-                                        <li class="list-group-item">Sectors/s:  <b></b></li>
-                                        <li class="list-group-item">Longitude/Latitude:   <b></b></li>
-                                        <li class="list-group-item">District:   <b></b></li>
-                            </ul> 
+                            <ul class="list-group">
+                                <li class="list-group-item">Event Type:
+                                    <b id="alert_type" style="padding-left:50px"> </b>
+                                </li>
+                                <li class="list-group-item">RainFall Amount:
+                                    <b id="rainfall_amount" style="padding-left:50px"></b>
+                                </li>
+                                <li class="list-group-item">RainFall Intensity:
+                                    <b id="rainfall_intensity" style="padding-left:50px"></b>
+                                </li>
+                                <li class="list-group-item">Recorded Date:
+                                    <b id="recorded_date" style="padding-left:50px"></b>
+                                </li>
+                                <li class="list-group-item">Expectated Start Date:
+                                    <b id="expectated_startdate" style="padding-left:50px"></b>
+                                </li>
+                                <li class="list-group-item">Expectated End Date:
+                                    <b id="expectated_enddate" style="padding-left:50px"></b>
+                                </li>
+                                <li class="list-group-item">Description:
+                                    <b id="description" style="padding-left:50px"></b>
+                                </li>
+                                <li class="list-group-item">Severity:
+                                    <b id="severity" style="padding-left:50px"></b>
+                                </li>
+                                <li class="list-group-item">Sectors/s:
+                                    <b id="sectors" style="padding-left:50px"></b>
+                                </li>
+                                <li class="list-group-item">Longitude/Latitude:
+                                    <b id="longitude" style="padding-left:50px"></b>,
+                                    <b id="latitude"></b>
+                                </li>
+                                <li class="list-group-item">District:
+                                    <b id="district" style="padding-left:50px"></b>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="tab-pane" id="2">
-                        <h3>Notice the gap between the content and tab after applying a background color</h3>
+                        <h3>Critical infrustructure </h3>
+                        <hr/>
+
+                        <h3>Affected Population Areas</h3>
+                        <hr>
+                        <h3>Estaimated Casualities </h3>
+                        <hr>
+                        <h3>Expoxed Population </h3>
                     </div>
 
                     <div class="tab-pane" id="3">
-                        <h3>add clearfix to tab-content (see the css)</h3>
+                        <b>Key Messages </b>
+                        <br>
+                        <p>The 2018 B cropping season (March-June) is underway, with successful planting efforts as the rains
+                            started on time and have been fairly well-distributed. With a generally favorable March-May rainfall
+                            forecast, the next harvest is likely to be average to above average, similar to 2018 Season A.
+                            With continued good food availability and access, the country is expected to remain in Minimal
+                            (IPC Phase 1). </p>
+
+
+                        <p>However, during the April-May lean season, some poor households in localized areas in Eastern Province
+                            that had below-average Season A production, may be in Stressed (IPC Phase 2). According to the
+                            National Institute of Statistics, staple food prices have remained relatively stable since December
+                            2017. In February, they were 7.4 and 10 percent lower than a year ago at the national and rural
+                            levels, respectively, improving poor household purchasing power. Ahead of the lean season, as
+                            poor households typically depend more on markets to meet their food needs, there are sufficient
+                            income-earning opportunities from farm labor and public work projects.
+                        </p>
+
+                        <p>The Government of Rwanda’s expanded social protection programs are also facilitating food access.
+                            Due to continued funding gaps, WFP is only able to provide 75 percent of daily food rations to
+                            over 173,000 refugees in camps. In February, this triggered violent clashes between refugees
+                            in Kiziba camp and police, resulting in 11 deaths. Despite this, nearly 2,600 Burundian refugees
+                            from the DRC, who were fearing forceful deportation to Burundi, fled to Rwanda in February. In
+                            the absence of assistance, the refugee camp population would likely be in Crisis (IPC Phase 3).
+                        </p>
+
+
                     </div>
 
-                    <div class="tab-pane active" id="4">
+                    <div class="tab-pane" id="4">
+                            <table id="example" class="display" width="100%"></table>                                  
+                    </div>
+
+                    <div class="tab-pane" id="5">
                             <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
                         </div>
-    
 
                 </div>
             </div>
@@ -148,78 +233,13 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/holder.min.js"></script>
     <script src="../js/offcanvas.js"></script>
+    <script src="../js/jquerymin.js"></script>
+    <script src="../js/clientSide.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoibmF5ZWJhcmUiLCJhIjoiY2pqdWUzaWJwMHNtcjN3bzZhbW10azQ5dyJ9.yw9uCLbl6S5YFIiGjZU0hg';
 
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            center: [29.4832771, -2.1417864],
-            zoom: 7.15
-        });
-
-        map.on('load', function () {
-            // Add a layer showing the places.
-            map.addLayer({
-                "id": "places",
-                "type": "symbol",
-                "source": {
-                    "type": "geojson",
-                    "data": {
-                        "type": "FeatureCollection",
-                        "features": [{
-                            "type": "Feature",
-                            "properties": {
-                                "description": "<strong>Full Report</strong><p><a href=\"http://www.mtpleasantdc.com/Full Report\" target=\"_blank\" title=\"Opens in a new window\">Full Report</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
-                                "icon": "theatre"
-                            },
-                            "geometry": {
-                                "type": "Point",
-                                "coordinates": [30.0430063, -1.9408518]
-                            }
-
-
-                        }]
-                    }
-                },
-                "layout": {
-                    "icon-image": "{icon}-15",
-                    "icon-allow-overlap": true
-                }
-            });
-
-            // When a click event occurs on a feature in the places layer, open a popup at the
-            // location of the feature, with description HTML from its properties.
-            map.on('click', 'places', function (e) {
-                var coordinates = e.features[0].geometry.coordinates.slice();
-                var description = e.features[0].properties.description;
-
-                // Ensure that if the map is zoomed out such that multiple
-                // copies of the feature are visible, the popup appears
-                // over the copy being pointed to.
-                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                }
-
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(description)
-                    .addTo(map);
-            });
-
-            // Change the cursor to a pointer when the mouse is over the places layer.
-            map.on('mouseenter', 'places', function () {
-                map.getCanvas().style.cursor = 'pointer';
-            });
-
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'places', function () {
-                map.getCanvas().style.cursor = '';
-            });
-        });
-    </script>
 </body>
 
 </html>

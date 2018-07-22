@@ -138,7 +138,7 @@ router.get('/alerts/', jsonParser, function (req, res) {
         if (err) {
             res.status(400).json(err)
         } else {
-            res.status(200).json(results.rows[0]);
+            res.status(200).json(results.rows);
         }
     });
 });

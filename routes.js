@@ -155,6 +155,31 @@ router.get('/coordinates/', jsonParser, function (req, res) {
     });
 });
 
+//get population data
+router.get('/population/', jsonParser, function (req, res) {
+    console.log("routes.. population....");
+    rainfallAlertController.getPopulation((err, results) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).json(results.rows);
+        }
+    });
+});
+
+//get infrustructure data
+router.get('/infrustructure/', jsonParser, function (req, res) {
+    console.log("routes.. infrustructure....");
+    rainfallAlertController.getInfrustructure((err, results) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).json(results.rows);
+        }
+    });
+});
+
+
 //route for full report
 router.get('/fullreport', function (req, res) { res.render('pages/fullreport'); });
 

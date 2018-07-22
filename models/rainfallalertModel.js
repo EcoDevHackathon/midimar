@@ -177,20 +177,14 @@ module.exports.getCoordinates = function getCoordinates(callback) {
     schema.getCoordinates(callback);
 }
 
-
-//
-//------------------------------------
-function getRegionFeatures( region,callback) {
-    console.log("models .... region features")
-   // schema.getRegionFeatures(function (err, result){
-
-       // getAlertSeverity( region,callback)
-   // });
+//get population data
+module.exports.getPopulation = function getPopulation(callback) {
+    console.log("models .... population")
+    schema.getPopulation(callback);
 }
 
-function getAlertSeverity( region,callback) {
-    //use Roger's formula
-
-    //return the result
+//get infrustructure data
+module.exports.getInfrustructure = function getInfrustructure(callback) {
+    console.log("models .... infrustructure")
+    schema.getInfrustructure(callback);
 }
-

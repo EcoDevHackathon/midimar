@@ -18,7 +18,6 @@ $(document).ready(function () {
 
 
 //get the alerts data
-
 function loadAlerts() {
     $.ajax({
         type: 'GET',
@@ -143,5 +142,23 @@ function loadCoordinates() {
 }
 //loadCoordinates()
 
-
+//loading  data using datablles
+var arr = [];
+function loadDisasterHistory() {
+    var disasterData =[];
+    $.ajax({
+        type: 'GET',
+        contentType: 'application/json',
+        url: '/disasters',
+        success: function (response) {
+             
+              //for(var y in response){
+                //console.log(response.rows[y].disaster_type)
+            disasterData.push(response);
+            }
+    
+    });
+}
  
+loadDisasterHistory() 
+loadCoordinates()

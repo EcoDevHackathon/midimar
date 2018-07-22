@@ -71,15 +71,16 @@ module.exports.registerRainfallAlert = async function (rainfallAlertModel, callb
 
 //getting all disasters
 module.exports.getDisasters = async function getDisasters(callback) {
-  const query = client.query('SELECT * FROM public.disaster_history', (err, result) => {
-    if (err) {
+  const query = client.query('SELECT disaster_type,sector,recorded_date,deaths,injured,missing,houses_destroyed,houses_damaged,relocated FROM public.disaster_history', (err, result) => {
+  if (err) {
       callback(err, results)
     } else {
       query.on('row', (row) => {
-        results.push(row);
+        results.push(jsonArray);
       });
 
       query.on('end', () => {
+      // var jsonArrayd = JSON.parse(result);
         console.log("disasters????", results);
         callback(err, result)
       });
@@ -110,26 +111,6 @@ module.exports.getCoordinates = async function getCoordinates(callback) {
   });
 }
 
-///getting users phone number
-module.exports.getReceiverPhoneNumber = async function getgetReceiverPhoneNumber(name) {
-  const query = client.query('SELECT * FROM public.receivers where official_name ='+name+' ', (err, result) => {
-    if (err) {
-      callback(err, results)
-    } else {
-      query.on('row', (row) => {
-        results.push(row);
-      });
-
-      query.on('end', () => {
-        console.log("phones????", result);
-        return  result
-      });
-
-    }
-
-  });
-}
-
 //getting all alerts
 module.exports.getAlerts = async function getAlerts(callback) {
   const query = client.query('SELECT * FROM public.rainfall_alert,regions', (err, result) => {
@@ -150,9 +131,9 @@ module.exports.getAlerts = async function getAlerts(callback) {
   });
 }
 
-//getting region features--------------------------------------
-module.exports.getRegionFeatures = function getCoordinates(regionName, callback) {
-  const query = client.query('SELECT * FROM regions', (err, result) => {
+//get population data
+module.exports.getPopulation = async function getPopulation(callback) {
+  const query = client.query('SELECT * FROM public.population', (err, result) => {
     if (err) {
       callback(err, results)
     } else {
@@ -161,7 +142,27 @@ module.exports.getRegionFeatures = function getCoordinates(regionName, callback)
       });
 
       query.on('end', () => {
-        console.log("disasters????", results);
+        console.log("population", results);
+        callback(err, result)
+      });
+
+    }
+
+  });
+}
+
+//get infrustructures
+module.exports.getInfrustructure = async function getInfrustructure(callback) {
+  const query = client.query('SELECT * FROM public.infrustructure', (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+        results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("infrustructure", results);
         callback(err, result)
       });
 

@@ -29,6 +29,10 @@
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' rel='stylesheet' />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 </head>
 
 <body class="bg-light">
@@ -111,7 +115,9 @@
                             </h6>
                         </a>
                     </li>
+
                     <div id="space" style="width:6px"></div>
+
                     <li>
                         <a href="#5" data-toggle="tab">
                             <h6>
@@ -120,6 +126,14 @@
                         </a>
                     </li>
 
+                    <div id="space" style="width:6px"></div>
+                    <li>
+                        <a href="#5" data-toggle="tab">
+                            <h6>
+                                <b>Recommendation</b>
+                            </h6>
+                        </a>
+                    </li>
 
                 </ul>
 
@@ -169,14 +183,84 @@
                     </div>
 
                     <div class="tab-pane" id="2">
-                        <h3>Critical infrustructure </h3>
-                        <hr/>
 
-                        <h3>Affected Population Areas</h3>
+                        <h5>Critical infrustructure </h5>
+                        <table id="infrustructureList" style="overflow-x:auto;">
+                            <thead>
+                                <tr style="background-color: #a3cedc; color:white">
+                                    <td>name</td>
+                                    <td>usage</td>
+                                    <td>runway</td>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                        <script type="text/javascript">
+                            var disasterData = [];
+
+                            $.ajax({
+                                type: 'GET',
+                                contentType: 'application/json',
+                                url: '/infrustructure',
+                                success: function (response) {
+                                    disasterData.push(response);
+                                    //  console.log(disaster.length)
+                                    var rows = "";
+                                    $.each(response, function () {
+                                        rows += "<tr><td>" + this.infrustructure_name + "</td><td>" + this.infrustructure_usage + "</td><td>" + this.runway_type + "</td>";
+
+                                    })
+                                    $(rows).appendTo("#infrustructureList tbody");
+                                }
+                            });
+                        </script>
                         <hr>
-                        <h3>Estaimated Casualities </h3>
+
+                        <h5>Affected Population Areas</h5>
+                        <table id="populationList" style="overflow-x:auto;">
+                            <thead>
+                                <tr style="background-color: #a3cedc; color:white">
+
+                                    <td>place</td>
+                                    <td>population</td>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                        <script type="text/javascript">
+                            var disasterData = [];
+
+                            $.ajax({
+                                type: 'GET',
+                                contentType: 'application/json',
+                                url: '/population',
+                                success: function (response) {
+                                    disasterData.push(response);
+                                    //  console.log(disaster.length)
+                                    var rows = "";
+                                    $.each(response, function () {
+                                        rows += "<tr><td>" + this.place_name + "</td><td>" + this.number_of_people + "</td></tr>";
+
+                                    })
+                                    $(rows).appendTo("#populationList tbody");
+                                }
+
+                            });
+                        </script>
                         <hr>
-                        <h3>Expoxed Population </h3>
+
+                        <h5>Estimated Casualities </h5>
+
+                        <hr>
+                        <h5>Exposed Population </h5>
+
+
                     </div>
 
                     <div class="tab-pane" id="3">
@@ -210,12 +294,48 @@
                     </div>
 
                     <div class="tab-pane" id="4">
-                            <table id="example" class="display" width="100%"></table>                                  
+                        <table id="itemList" style="overflow-x:auto;">
+                            <thead>
+                                <tr style="background-color: #a3cedc; color:white">
+                                    <td>event</td>
+                                    <td>sector</td>
+                                    <td>date</td>
+                                    <td>deaths</td>
+                                    <td>injured</td>
+                                    <td>missing</td>
+                                    <td>houses_destroyed</td>
+                                    <td>houses_damaged</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                        <script type="text/javascript">
+                            var disasterData = [];
+
+                            $.ajax({
+                                type: 'GET',
+                                contentType: 'application/json',
+                                url: '/disasters',
+                                success: function (response) {
+                                    disasterData.push(response);
+                                    //  console.log(disaster.length)
+                                    var rows = "";
+                                    $.each(response, function () {
+                                        rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
+
+                                    })
+                                    $(rows).appendTo("#itemList tbody");
+                                }
+                            });
+                        </script>
+
                     </div>
 
                     <div class="tab-pane" id="5">
-                            <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
-                        </div>
+                        <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
+                    </div>
 
                 </div>
             </div>
@@ -235,11 +355,6 @@
     <script src="../js/offcanvas.js"></script>
     <script src="../js/jquerymin.js"></script>
     <script src="../js/clientSide.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-
-
 </body>
 
 </html>

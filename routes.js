@@ -85,8 +85,6 @@ router.post('/registerCommunication/', jsonParser, function (req, res) {
 
 router.post('/alerts/', jsonParser, function (req, res) {
     console.log("routes......");
-    //rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date (req.body.startExpectedTime).getTime() ,  new Date (req.body.endExpectedTime).getTime(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(req.body.date).getTime(), (err, result) => {
-
     rainfallAlertController.sendRainfallAlert(req.body.alertType, new Date(), new Date(), req.body.description, req.body.alertSeverity, req.body.alertId, new Date(), req.body.rainfalAmount, req.body.rainfallIntensity, req.body.district, req.body.sector, (result, err) => {
         if (err) {
             res.status(400).json(err)
@@ -100,9 +98,7 @@ router.post('/alerts/', jsonParser, function (req, res) {
 //disseminating alert
 router.post('/alerts/disseminate', jsonParser, function (req, res) {
     console.log("routes......");
-    //rainfallAlertController.sendRainfallAlert(req.body.alertType,new Date (req.body.startExpectedTime).getTime() ,  new Date (req.body.endExpectedTime).getTime(), req.body.description, req.body.regions, req.body.alertSeverity,req.body.alertId, new Date(req.body.date).getTime(), (err, result) => {
-
-    rainfallAlertController.disseminate(req.body.alertType, new Date(), new Date(), req.body.description, req.body.alertSeverity, req.body.alertId, new Date(), req.body.rainfalAmount, req.body.rainfallIntensity, req.body.district, req.body.sector, req.body.comment, req.body.receivers, (result, err) => {
+    rainfallAlertController.disseminate(req.body.alertType, new Date(), new Date(), req.body.description, req.body.alertSeverity, req.body.alertId, new Date(), req.body.rainfalAmount, req.body.rainfallIntensity, req.body.district, req.body.sector, req.body.comment, "+"+req.body.receiver, (result, err) => {
         if (err) {
             res.status(400).json(err)
 

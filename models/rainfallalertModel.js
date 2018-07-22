@@ -105,7 +105,7 @@ class rainfallAlertModel {
             .create({
                 body: alert.toString() + 'wait',
                 from: '(701) 401-5836',
-                to: "+250785115074"
+                to: receivers
             })
             .then(message => console.log(message.sid))
             .done();

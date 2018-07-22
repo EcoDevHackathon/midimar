@@ -151,7 +151,7 @@ module.exports.getPopulation = async function getPopulation(callback) {
   });
 }
 
-//get infrustructure
+//get infrustructures
 module.exports.getInfrustructure = async function getInfrustructure(callback) {
   const query = client.query('SELECT * FROM public.infrustructure', (err, result) => {
     if (err) {

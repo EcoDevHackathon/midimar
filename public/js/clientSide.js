@@ -6,9 +6,14 @@ var trackdate;
 var index = 0;
 
 $(document).ready(function () {
-    $("#postAlert").click(function () {
-        postAlert();
+    $("#sendAlert").click(function () {
+        sendAlert();
     });
+
+    $("#disseminate").click(function () {
+        disseminateWarning();
+    });
+
 });
 
 
@@ -33,6 +38,75 @@ function loadAlerts() {
     });
 }
 
+function sendAlert() {
+   // alert("hereee");
+    var alerts = {}
+
+    var alertType =  document.getElementById('alertType');
+    var startDate = document.getElementById('expectedStartingTime');
+   var endDate = document.getElementById('expectedEndTime');
+    var description = document.getElementById('description');
+    var alertSeverity = document.getElementById('alertySeverity');
+    //should  be auto generated
+    //alerts.alertId = 3
+    var currentDate =  document.getElementById('expectedStartingTime');
+    var rainfalAmount = document.getElementById('rainfallAmount');
+    var rainfallIntensity = document.getElementById('rainfallIntensity')
+    var district = document.getElementById('district'); 
+    var sector =  document.getElementById('sector');
+
+    alerts.alertType =  alertType.value;
+    alerts.startDate = startDate.value;
+    alerts.endDate = endDate.value;
+    alerts.description = description.value;
+    alerts.alertSeverity = alertSeverity.value;
+    //should  be auto generated
+    alerts.alertId = 3
+    alerts.currentDate =  currentDate.value;
+    alerts.rainfalAmount = rainfalAmount.value;
+    alerts.rainfallIntensity = rainfallIntensity.value
+    alerts.district =district.value; 
+    alerts.sector =  sector.value;
+    alert(alerts.alertType);
+
+
+    $.post('/alerts', alerts, function (response) {
+        console.log(response);
+    }, 'JSON');
+
+}
+
+function disseminateWarning() {
+     var warning = {}
+ 
+     var alertType =  document.getElementById('alertType');
+     var startDate = document.getElementById('expectedStartingTime');
+    var endDate = document.getElementById('expectedEndTime');
+     var comment  = document.getElementById('comment');
+     var alertSeverity = document.getElementById('alertySeverity');
+     var receiver = document.getElementById('receiver');
+     var currentDate =  document.getElementById('expectedStartingTime');
+     var district = document.getElementById('district'); 
+     var sector =  document.getElementById('sector');
+
+     warning.alertType =  alertType.value;
+     warning.startDate = startDate.value;
+     warning.endDate = endDate.value;
+     warning.comment = comment.value;
+     warning.alertSeverity = alertSeverity.value;
+    //should  be auto generated
+     warning.alertId  = 3
+     warning.currentDate =  currentDate.value;
+     warning.district =district.value; 
+     warning.sector =  sector.value;
+     $.post('/alerts/disseminate', warning, function (response) {
+         console.log(response);
+     }, 'JSON');
+     alert('miracles')
+ 
+ }
+
+ 
 function loadCoordinates() {
     $.ajax({
         type: 'GET',
@@ -66,6 +140,7 @@ function loadCoordinates() {
         }
     })
 }
+//loadCoordinates()
 
 //loading  data using datablles
 var arr = [];

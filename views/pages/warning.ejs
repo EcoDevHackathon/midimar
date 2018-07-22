@@ -1,0 +1,228 @@
+<!doctype html>
+<% include ../partials/header %>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../favicon.ico">
+
+    <title>Disaster Alert And Coordination System </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/offcanvas.css" rel="stylesheet">
+    <!--leaflet css -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+        crossorigin="">
+        </script>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/alerts">Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="registerCommunication">Disseminate Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Receive Disaster Warning</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+      <form class="well form-horizontal">
+        <fieldset>
+  
+          <!-- Form Name -->
+          <legend>Warning to be sent to people</legend>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Alert Type</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </span>
+                <input name="alertType" id="alertType" placeholder="Example: rainfall" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">District</label>
+            <div class="col-md-4 selectContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <input name="district" id="district" placeholder="district" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+  
+  
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Sector</label>
+            <div class="col-md-4 selectContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <input name="sector" id="sector" placeholder="Ex: Nyamirambo" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Expected Starting Time</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input type="date" name="start" id="expectedStartingTime" placeholder="date" class="form-control">
+  
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Expected End Time</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input name="expected end" placeholder="date" id="expectedEndTime" class="form-control" type="date">
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Severity</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-fire"></i>
+                </span>
+                <select name="severity" id="alertySeverity" class="form-control selectpicker">
+                  <option value=" ">Select one</option>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">receiver</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-fire"></i>
+                </span>
+                <select name="severity" id="receiver" class="form-control selectpicker">
+                  <option value=" ">Select one</option>
+                  <option>Flood Engieer</option>
+                  <option>Jeannette Mukamana</option>
+                  <option>Martine Habimana</option>
+                  <option>Micheal Nayebare</option>
+                  <option>Roger Mizero</option>
+                </select>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Comment</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyhicon-star"></i>
+                </span>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+  
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+              <button id="disseminate" class="btn btn-warning">Send
+                <span class="glyphicon glyphicon-send"></span>
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+        
+       
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../js/jquery-slim.min.js"><\/script>')</script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/holder.min.js"></script>
+    <script src="../js/offcanvas.js"></script>
+    <script src="../js/jquerymin.js"></script>
+    <script src="../js/clientSide.js"></script>
+
+<!--script to load  alerts-->
+</body>
+
+</html>
+<% include ../partials/footer %>

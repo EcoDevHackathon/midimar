@@ -1,168 +1,246 @@
-<!-- the header code resides in partials header.html-->
+<!doctype html>
 <% include ../partials/header %>
+<html lang="en">
 
-  <div class="container">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../favicon.ico">
 
-    <form class="well form-horizontal" action=" " method="post" id="contact_form">
-      <fieldset>
+    <title>Disaster Alert And Coordination System </title>
 
-        <!-- Form Name -->
-        <legend>Fill the alert form with respective data</legend>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Text input-->
-        <div class="form-group">
+    <!-- Custom styles for this template -->
+    <link href="../css/offcanvas.css" rel="stylesheet">
+    <!--leaflet css -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+        crossorigin="">
+        </script>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/alerts">Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="registerCommunication">Disseminate Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Receive Disaster Warning</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+      <form class="well form-horizontal" action=" " method="POST" >
+        <fieldset>
+  
+          <!-- Form Name -->
+          <legend>Fill the alert form with respective data</legend>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Alert Type</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </span>
+                <input name="alertType" id="alertType" placeholder="Example: rainfall" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
             <label class="col-md-4 control-label">District</label>
             <div class="col-md-4 selectContainer">
               <div class="input-group">
                 <span class="input-group-addon">
-                  <i class="glyphicon glyphicon-list"></i>
+                  <i class="glyphicon glyphicon-home"></i>
                 </span>
-                <select name="choiceDisaster" class="form-control selectpicker">
-                  <option value=" ">select a District</option>
-                  <option>Gasabo</option>
-                  <option>Kicukiro</option>
-                  <option>Nyarugenge</option>
+                <input name="district" id="district" placeholder="district" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+  
+  
+          <!-- Text input-->
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Sector</label>
+            <div class="col-md-4 selectContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <input name="sector" id="sector" placeholder="Ex: Nyamirambo" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Expected Starting Time</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input type="date" name="start" id="expectedStartingTime" placeholder="date" class="form-control">
+  
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Expected End Time</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input name="expected end" placeholder="date" id="expectedEndTime" class="form-control" type="date">
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Rainfall amount(mm)</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input name="amount" id="rainfallAmount" placeholder="Ex: 20" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label"> Rainfall Intensity(mm/h)</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input name="intensity" id="rainfallIntensity" placeholder="Ex: 1.5" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+  
+  
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Severity</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-fire"></i>
+                </span>
+                <select name="severity" id="alertySeverity" class="form-control selectpicker">
+                  <option value=" ">Select one</option>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
                 </select>
               </div>
             </div>
           </div>
+  
+          <!-- Text input-->
+  
+          <div class="form-group">
+            <label class="col-md-4 control-label">Description</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyhicon-star"></i>
+                </span>
+                <textarea class="form-control" rows="5" id="description"></textarea>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Text input-->
+  
+  
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+              <button id="sendAlert" class="btn btn-warning">Send
+                <span class="glyphicon glyphicon-send"></span>
+              </button>
+            </div>
+          </div>
+  
+  
+  
+  
+        </fieldset>
+      </form>
         
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Rain Intensity</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-envelope"></i>
-              </span>
-              <input name="e=intensity" placeholder="rain intensity" class="form-control" type="text">
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Expected date</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-earphone"></i>
-              </span>
-              <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
-            </div>
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Description</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-list"></i>
-              </span>
-              <select name="choiceCom" class="form-control selectpicker">
-                <option value=" ">select a choice</option>
-                <option>Email</option>
-                <option>SMS</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- Text input-->
-         <div class="form-group">
-          <label class="col-md-4 control-label">Disaster</label>
-          <div class="col-md-4 selectContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-list"></i>
-              </span>
-              <select name="choiceDisaster" class="form-control selectpicker">
-                <option value=" ">select a disaster</option>
-                <option>Rain storm</option>
-                <option>Flood</option>
-                <option>Drought</option>
-                <option>Land slide</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-           <!-- Select Basic -->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Level</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-list"></i>
-              </span>
-              <select name="choiceLevel" class="form-control selectpicker">
-                <option value=" ">select a disaster level</option>
-                <option>Low</option>
-                <option>Medium</option>
-                <option>Severe</option>
-                
-              </select>
-            </div>
-          </div>
-        </div>
-
        
+    </main>
 
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Place</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-home"></i>
-              </span>
-              <input name="place" placeholder="place" class="form-control" type="text">
-            </div>
-          </div>
-        </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../js/jquery-slim.min.js"><\/script>')</script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/holder.min.js"></script>
+    <script src="../js/offcanvas.js"></script>
+    <script src="../js/jquerymin.js"></script>
+    <script src="../js/clientSide.js"></script>
 
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Language</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-list"></i>
-              </span>
-              <select name="language" class="form-control selectpicker">
-                <option value=" ">select a language</option>
-                <option>Kinyarwanda</option>
-                <option>English</option>
-                <option>French</option>
-                
-              </select>
-            </div>
-          </div>
-        </div>
+<!--script to load  alerts-->
+</body>
 
-        
-      
-        <!-- Button -->
-        <div class="form-group">
-          <label class="col-md-4 control-label"></label>
-          <div class="col-md-4">
-            <button type="submit" class="btn btn-warning">Send
-              <span class="glyphicon glyphicon-send"></span>
-            </button>
-          </div>
-        </div>
-
-        
-        
-
-      </fieldset>
-    </form>
-  </div>
-  </div>
-  <!-- /.container -->
-  <!-- the footer code resides in partials header.html-->
-  <% include ../partials/footer %>
+</html>
+<% include ../partials/footer %>

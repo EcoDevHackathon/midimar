@@ -48,6 +48,15 @@ router.get('/RainfallAlert', function (req, res) {
 });
 
 //route for sending meteo alert
+router.get('/warning', function (req, res) {
+
+    res.render('pages/warning');
+});
+
+
+//warning to be disseminated
+
+//route for sending meteo alert
 router.post('/RainfallAlert', function (req, res) {
     //
     res.render('pages/RainfallAlert');
@@ -84,12 +93,14 @@ router.post('/registerCommunication/', jsonParser, function (req, res) {
 
 
 router.post('/alerts/', jsonParser, function (req, res) {
-    console.log("routes......");
+    console.log("routes req.body req.body");
+    console.log("routes req.body", req.body);
     rainfallAlertController.sendRainfallAlert(req.body.alertType, new Date(), new Date(), req.body.description, req.body.alertSeverity, req.body.alertId, new Date(), req.body.rainfalAmount, req.body.rainfallIntensity, req.body.district, req.body.sector, (result, err) => {
         if (err) {
             res.status(400).json(err)
 
         } else {
+            console.log(result);
             res.status(200).json(result);
         }
     });
@@ -97,9 +108,9 @@ router.post('/alerts/', jsonParser, function (req, res) {
 
 //disseminating alert
 router.post('/alerts/disseminate', jsonParser, function (req, res) {
-    console.log("routes......");
-    rainfallAlertController.disseminate(req.body.alertType, new Date(), new Date(), req.body.description, req.body.alertSeverity, req.body.alertId, new Date(), req.body.rainfalAmount, req.body.rainfallIntensity, req.body.district, req.body.sector, req.body.comment, "+"+req.body.receiver, (result, err) => {
-        if (err) {
+    console.log("routes...... disseminate");
+    rainfallAlertController.disseminate(req.body.alertType, req.body.startDate, req.body.endDate, null, req.body.alertSeverity, null, new Date(), null, null, req.body.district, req.body.sector, req.body.comment, "+250785115074" , (result, err) => {  
+   if (err) {
             res.status(400).json(err)
 
         } else {
@@ -122,7 +133,7 @@ router.get('/disasters/', jsonParser, function (req, res) {
 
 //get route for alerts
 router.get('/alerts/', jsonParser, function (req, res) {
-    console.log("routes.. alerts....");
+    console.log("routes..from uri alerts....");
     rainfallAlertController.getAlerts((err, results) => {
         if (err) {
             res.status(400).json(err)

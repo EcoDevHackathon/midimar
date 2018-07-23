@@ -73,7 +73,6 @@ function sendAlert() {
     $.post('/alerts', alerts, function (response) {
         console.log(response);
     }, 'JSON');
-
 }
 
 function disseminateWarning() {
@@ -102,7 +101,7 @@ function disseminateWarning() {
      $.post('/alerts/disseminate', warning, function (response) {
          console.log(response);
      }, 'JSON');
-     alert('miracles')
+    // alert('miracles')
  
  }
 

@@ -113,7 +113,7 @@ module.exports.getCoordinates = async function getCoordinates(callback) {
 
 //getting all alerts
 module.exports.getAlerts = async function getAlerts(callback) {
-  const query = client.query('SELECT * FROM public.rainfall_alert,regions', (err, result) => {
+  const query = client.query('SELECT * FROM public.rainfall_alert, public.regions where public.rainfall_alert.sector = public.regions.name', (err, result) => {
     if (err) {
       callback(err, results)
     } else {

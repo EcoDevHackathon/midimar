@@ -1,5 +1,5 @@
 /**
- * Author Jeannette Mukamana Bayi 2018 7/July/2018
+ * Author Jeannette Mukamana Bayi + Micheal Nayebare 2018 7/July/2018
  */
 
 var schema = require('../middleware/pg_dbschema.js');
@@ -82,23 +82,23 @@ class rainfallAlertModel {
     }
 
     disseminate(comment, receivers, callback) {
-    
+
         console.log("disseminating information......" + this);
 
         //loop and send individually
 
-       this.sendAlertBySms(comment, receivers, this, callback)
+        this.sendAlertBySms(comment, receivers, this, callback)
 
-       //tsend email
-       this.sendAlertByEmail(this)
+        //tsend email
+        this.sendAlertByEmail(this)
 
-       //get receiver phone number from database
+        //get receiver phone number from database
 
-      // this.getReceiverPhoneNumber("jeannette") 
+        // this.getReceiverPhoneNumber("jeannette") 
 
-      this.sendAlertByEmail(comment, receivers, this, callback)
-       
-      
+        this.sendAlertByEmail(comment, receivers, this, callback)
+
+
     }
 
 
@@ -114,15 +114,15 @@ class rainfallAlertModel {
                     user: 'midimaralert@gmail.com',
                     pass: 'h0zg0Kkbupe$B3!B'
                 },
-                
+
             });
-            let mailOptions= {
+            let mailOptions = {
                 from: 'MIDIMAR DISASTER ALERT <midimaralert@gmail.com>',
                 to: 'jannekista3@gmail.com',
                 subject: 'Midimar Disaster Alert',
                 text: 'Heavy Rainfall shower',
-                html: '<b>'+message+'</b>'
-             }
+                html: '<b>' + message + '</b>'
+            }
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
                     return console.log(error);
@@ -131,7 +131,7 @@ class rainfallAlertModel {
                 console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
             });
         });
-    
+
 
 
     }
@@ -140,14 +140,14 @@ class rainfallAlertModel {
     getReceiverPhoneNumber(receivers) {
         //
         console.log("searching for receiver's phone number")
-       console.log(schema.getReceiverPhoneNumber(receivers)) ;
-        
+        console.log(schema.getReceiverPhoneNumber(receivers));
+
     }
 
     sendAlertBySms(comment, receivers, alert, callback) {
         //send the alert by Sms
 
-        console.log("receivers"+receivers);
+        console.log("receivers" + receivers);
         const accountSid = 'AC518dd22f4ab34aff1b7a8eb966782a9e';
         const authToken = 'b171bcdea52d0240be052dadea301d55';
         const client = require('twilio')(accountSid, authToken);
@@ -163,14 +163,11 @@ class rainfallAlertModel {
     }
 
 }
-
 module.exports = rainfallAlertModel;
-
 module.exports.getAlerts = function getAlerts(callback) {
     console.log("models .... alerts")
     schema.getAlerts(callback);
 }
-
 module.exports.getReport = function getReport(region, callback) {
     console.log("models .... reoprt")
     schema.getReport(region, callback);

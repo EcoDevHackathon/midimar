@@ -193,7 +193,7 @@ router.get('/infrustructure/', jsonParser, function (req, res) {
 
 
 //route for full report
-router.get('/fullreport/', jsonParser,function (req, res) { res.render('pages/fullreport'); });
+router.get('/fullreport/:region/',function (req, res) { res.render('pages/fullreport'); });
 
 //default  home route 
 router.get('/', function (req, res) { res.render('pages/home'); });

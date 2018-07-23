@@ -40,24 +40,19 @@
             </button>
 
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/alerts">Alerts</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/warning">Disseminate Information</a>
+                        <a class="nav-link" href="warning">Disseminate Information</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Receive Disaster Warning</a>
-                    </li>
-
                 </ul>
+
             </div>
         </nav>
 
@@ -71,7 +66,7 @@
 
             <div class="my-3 p-3 bg-white rounded box-shadow">
                 <h6 class="border-bottom border-gray pb-2 mb-0">Map</h6>
-                <div class="media text-muted pt-3" id="map" style='width: 1080px; height: 430px;'></div>
+                <div class="media text-muted pt-3" id="map" style='width: 1100px; height: 430px;'></div>
 
             </div>
 
@@ -132,7 +127,7 @@
         <script src="../js/jquerymin.js"></script>
 
 
-        <!--script to load  alerts-->
+        <!--script to load  alerts thet are computed -->
         <script>
             function loadCoordinates() {
 
@@ -143,7 +138,7 @@
                     success: function (response) {
                         console.log(response)
 
-                        var mymap = L.map('map').setView([-1.9706, 30.1044], 8.6);
+                        var mymap = L.map('map').setView([-1.9706, 30.1044], 10.6);
 
                         style: 'mapbox://styles/mapbox/streets-v9',
                             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -155,15 +150,20 @@
 
                             }).addTo(mymap);
 
-                        for (var i = 0; i < response.length; i++) {
-                            L.marker([response[i].latitude, response[i].longitude]).addTo(mymap)
-                                .bindPopup("<h6>'" + response[i].severity + " '" + response[i].alert_type + " '" + response[i].name + " '" + response[i].excepected_startdate + "'</h6><p><div id="+response[i].sector+" style='cursor: pointer'>Full Report</a>  '" + response[i].description + "' </p>").openPopup();
-                            L.circle([response[i].latitude, response[i].longitude], 1200, {
 
-                                color: 'red',
-                                fillColor: '#f03',
+
+                        for (var i = 0; i < response.length; i++) {
+                            //# code for the algorithm is inserted here.
+
+                            var sector_name = response[i].sector;
+                            var trimmed_variable = sector_name.trim();
+                            var finalString = trimmed_variable.replace("'", "");
+                            L.marker([response[i].latitude, response[i].longitude]).addTo(mymap)
+                                .bindPopup("<h6>'" + response[i].severity + " '" + response[i].alert_type + " '" + response[i].name + " '" + response[i].excepected_startdate + "'</h6><p><a href=\"fullreport\/" + finalString + "\" target=\"_blank\" title=\"Opens in a new window\">Full Report</a>  '" + response[i].description + "' </p>").openPopup();
+                            L.circle([response[i].latitude, response[i].longitude], 800, {
+                                color: response[i].color,
+                                fillColor: response[i].color,
                                 fillOpacity: 0.5
-                                
                             }).addTo(mymap).bindPopup("I am a circle.");
                             var popup = L.popup();
                         }

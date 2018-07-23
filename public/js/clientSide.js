@@ -14,10 +14,13 @@ $(document).ready(function () {
         disseminateWarning();
     });
 
-    $("#fullreport").click(function() {
+    $(".fullreport").click(function()
+   
+    {
         window.location = "http://localhost/fullreport/";
+        alert('hey')
     });
-
+    
 });
 
 
@@ -110,7 +113,7 @@ function disseminateWarning() {
  }
 
  
-function loadCoordinates() {
+/*function loadCoordinates() {
     $.ajax({
         type: 'GET',
         contentType: 'application/json',
@@ -143,6 +146,7 @@ function loadCoordinates() {
         }
     })
 }
+*/
 //loadCoordinates()
 
 //loading  data using datablles
@@ -163,5 +167,6 @@ function loadDisasterHistory() {
     });
 }
  
+
 loadDisasterHistory() 
-loadCoordinates()
+

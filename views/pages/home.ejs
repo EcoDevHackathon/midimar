@@ -51,7 +51,7 @@
                         <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="warning">Disseminate Information</a>
+                        <a class="nav-link" href="/warning">Disseminate Information</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Receive Disaster Warning</a>
@@ -157,11 +157,13 @@
 
                         for (var i = 0; i < response.length; i++) {
                             L.marker([response[i].latitude, response[i].longitude]).addTo(mymap)
-                                .bindPopup("<h6>'" + response[i].severity + " '" + response[i].alert_type + " '" + response[i].name + " '" + response[i].excepected_startdate + "'</h6><p><a href=\"fullreport\/" + response[i].sector + "'\" target=\"_blank\" title=\"Opens in a new window\">Full Report</a>  '" + response[i].description + "' </p>").openPopup();
-                            L.circle([response[i].latitude, response[i].longitude], 800, {
+                                .bindPopup("<h6>'" + response[i].severity + " '" + response[i].alert_type + " '" + response[i].name + " '" + response[i].excepected_startdate + "'</h6><p><div id="+response[i].sector+" style='cursor: pointer'>Full Report</a>  '" + response[i].description + "' </p>").openPopup();
+                            L.circle([response[i].latitude, response[i].longitude], 1200, {
+
                                 color: 'red',
                                 fillColor: '#f03',
                                 fillOpacity: 0.5
+                                
                             }).addTo(mymap).bindPopup("I am a circle.");
                             var popup = L.popup();
                         }

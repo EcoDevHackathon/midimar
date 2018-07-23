@@ -143,6 +143,19 @@ router.get('/alerts/', jsonParser, function (req, res) {
     });
 });
 
+//get full report of a place
+router.get('/fullReport/:region/', jsonParser, function (req, res) {
+
+    console.log("routes..   report...."+req.params.region);
+    rainfallAlertController.getReport(req.params.region,(err, results) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).json(results.rows);
+        }
+    });
+});
+
 //use route for coordinates
 router.get('/coordinates/', jsonParser, function (req, res) {
     console.log("routes.. coordinates....");

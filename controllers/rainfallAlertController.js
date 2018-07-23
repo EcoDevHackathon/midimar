@@ -27,21 +27,18 @@ module.exports.getAlerts = function getAlerts(callback) {
     rainfallalertModel.getAlerts(callback);
 }
 
+
+module.exports.getReport = function getReport(region, callback) {
+    console.log("controllers .... report") 
+    rainfallalertModel.getReport(region, callback);
+}
+
 module.exports.getCoordinates = function getCoordinates(callback) {
     console.log("controllers .... coordinates") 
     rainfallalertModel.getCoordinates(callback);
 }
-//get infrustructure
-module.exports.getInfrustructure = function getInfrustructure(callback) {
-    console.log("controllers .... coordinates") 
-    rainfallalertModel.getInfrustructure(callback);
-}
 
-//get population
-module.exports.getPopulation = function getPopulation(callback) {
-    console.log("controllers .... coordinates") 
-    rainfallalertModel.getPopulation(callback);
-}
+
 
 //var rainfallAlert = new rainfallalertModel("alertType", "startExpectedTime", "endExpectedTime",  "description", "alertSeverity", "alertId", "date", "rainfalAmount", "rainfallIntensity", "district", "sector");
 //rainfallAlert.disseminate("comment", "+250785115074");

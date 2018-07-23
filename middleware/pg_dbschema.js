@@ -131,6 +131,29 @@ module.exports.getAlerts = async function getAlerts(callback) {
   });
 }
 
+
+//getting report for a given region
+module.exports.getReport = async function getReport(region , callback) {
+
+  console.log("db side ooooh-----"+region)
+  const query = client.query("SELECT * FROM public.rainfall_alert where public.rainfall_alert.sector = '"+region+"'", (err, result) => {
+    if (err) {
+      callback(err, results)
+    } else {
+      query.on('row', (row) => {
+        results.push(row);
+      });
+
+      query.on('end', () => {
+        console.log("disasters????", results);
+        callback(err, result)
+      });
+
+    }
+
+  });
+}
+
 //get population data
 module.exports.getPopulation = async function getPopulation(callback) {
   const query = client.query('SELECT * FROM public.population', (err, result) => {

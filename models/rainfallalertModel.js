@@ -171,6 +171,11 @@ module.exports.getAlerts = function getAlerts(callback) {
     schema.getAlerts(callback);
 }
 
+module.exports.getReport = function getReport(region, callback) {
+    console.log("models .... reoprt")
+    schema.getReport(region, callback);
+}
+
 
 module.exports.getCoordinates = function getCoordinates(callback) {
     console.log("models .... coordinates")

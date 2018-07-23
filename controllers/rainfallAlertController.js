@@ -19,14 +19,10 @@ module.exports.disseminate  = async function disseminate(alertType, startExpecte
     rainfallAlert.disseminate(comment, receivers, callback);
 }
 
-
-
-
 module.exports.getAlerts = function getAlerts(callback) {
     console.log("controllers .... alerts") 
     rainfallalertModel.getAlerts(callback);
 }
-
 
 module.exports.getReport = function getReport(region, callback) {
     console.log("controllers .... report") 
@@ -37,20 +33,6 @@ module.exports.getCoordinates = function getCoordinates(callback) {
     console.log("controllers .... coordinates") 
     rainfallalertModel.getCoordinates(callback);
 }
-
-
-
-//var rainfallAlert = new rainfallalertModel("alertType", "startExpectedTime", "endExpectedTime",  "description", "alertSeverity", "alertId", "date", "rainfalAmount", "rainfallIntensity", "district", "sector");
-//rainfallAlert.disseminate("comment", "+250785115074");
-//sendRainfallAlert('rodger@gmail.com', '873757575', 'email', 'fire', 3, 'Butare', 'english');
-
-
-//send
-
-//sesma
-//map
-//save
-//
 
 
 async function sendMessage(msg) {

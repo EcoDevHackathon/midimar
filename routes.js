@@ -144,7 +144,7 @@ router.get('/alerts/', jsonParser, function (req, res) {
 });
 
 //get full report of a place
-router.get('/fullReport/:region/', jsonParser, function (req, res) {
+router.get('/report/:region/', jsonParser, function (req, res) {
 
     console.log("routes..   report...."+req.params.region);
     rainfallAlertController.getReport(req.params.region,(err, results) => {

@@ -1,8 +1,8 @@
 <!doctype html>
 <% include ../partials/header %>
-<html lang="en">
+  <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -19,53 +19,49 @@
     <!--leaflet css -->
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-        crossorigin="" />
+      crossorigin="" />
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-        crossorigin="">
-        </script>
+      crossorigin="">
+      </script>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
-</head>
+  </head>
 
-<body class="bg-light">
+  <body class="bg-light">
 
     <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/alerts">Alerts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="warning">Disseminate Information</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Receive Disaster Warning</a>
-                </li>
-            </ul>
-        </div>
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="warning">Disseminate Information</a>
+          </li>
+
+        </ul>
+      </div>
     </nav>
 
     <main role="main" class="container">
-      <form class="well form-horizontal" action=" " method="POST" >
+      <form class="well form-horizontal" action=" " method="POST">
         <fieldset>
-  
+
           <!-- Form Name -->
           <legend>Fill the alert form with respective data</legend>
-  
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label">Alert Type</label>
             <div class="col-md-4 inputGroupContainer">
@@ -77,9 +73,9 @@
               </div>
             </div>
           </div>
-  
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label">District</label>
             <div class="col-md-4 selectContainer">
@@ -91,12 +87,12 @@
               </div>
             </div>
           </div>
-  
-  
+
+
           <!-- Text input-->
-  
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label">Sector</label>
             <div class="col-md-4 selectContainer">
@@ -108,9 +104,9 @@
               </div>
             </div>
           </div>
-  
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label">Expected Starting Time</label>
             <div class="col-md-4 inputGroupContainer">
@@ -119,15 +115,15 @@
                   <i class="glyphicon glyphicon-calendar"></i>
                 </span>
                 <input type="date" name="start" id="expectedStartingTime" placeholder="date" class="form-control">
-  
+
               </div>
             </div>
           </div>
-  
+
           <!-- Text input-->
-  
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label">Expected End Time</label>
             <div class="col-md-4 inputGroupContainer">
@@ -139,9 +135,9 @@
               </div>
             </div>
           </div>
-  
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label">Rainfall amount(mm)</label>
             <div class="col-md-4 inputGroupContainer">
@@ -153,9 +149,9 @@
               </div>
             </div>
           </div>
-  
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label"> Rainfall Intensity(mm/h)</label>
             <div class="col-md-4 inputGroupContainer">
@@ -167,11 +163,11 @@
               </div>
             </div>
           </div>
-  
-  
-  
+
+
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label">Severity</label>
             <div class="col-md-4 inputGroupContainer">
@@ -188,9 +184,9 @@
               </div>
             </div>
           </div>
-  
+
           <!-- Text input-->
-  
+
           <div class="form-group">
             <label class="col-md-4 control-label">Description</label>
             <div class="col-md-4 inputGroupContainer">
@@ -202,10 +198,10 @@
               </div>
             </div>
           </div>
-  
+
           <!-- Text input-->
-  
-  
+
+
           <!-- Button -->
           <div class="form-group">
             <label class="col-md-4 control-label"></label>
@@ -215,21 +211,21 @@
               </button>
             </div>
           </div>
-  
-  
-  
-  
+
+
+
+
         </fieldset>
       </form>
-        
-       
+
+
     </main>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../js/jquery-slim.min.js"><\/script>')</script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
@@ -238,8 +234,8 @@
     <script src="../js/jquerymin.js"></script>
     <script src="../js/clientSide.js"></script>
 
-<!--script to load  alerts-->
-</body>
+    <!--script to load  alerts-->
+  </body>
 
-</html>
-<% include ../partials/footer %>
+  </html>
+  <% include ../partials/footer %>

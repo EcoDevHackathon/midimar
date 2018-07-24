@@ -98,7 +98,6 @@ class rainfallAlertModel {
 
         this.sendAlertByEmail(comment, receivers, this, callback)
 
-
     }
 
 
@@ -138,7 +137,6 @@ class rainfallAlertModel {
 
     //getting receiver's phone number
     getReceiverPhoneNumber(receivers) {
-        //
         console.log("searching for receiver's phone number")
         console.log(schema.getReceiverPhoneNumber(receivers));
 
@@ -180,7 +178,7 @@ module.exports.getCoordinates = function getCoordinates(callback) {
 }
 
 //get population data
-module.exports.getPopulation = function getPopulation(callback) {
+module.exports.getPopulation = function getPopulation(region,callback) {
     console.log("models .... population")
     schema.getPopulation(callback);
 }

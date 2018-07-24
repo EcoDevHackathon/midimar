@@ -112,21 +112,12 @@
                         </a>
                     </li>
 
-                    <div id="space" style="width:6px"></div>
-
-                    <li>
-                        <a href="#5" data-toggle="tab">
-                            <h6>
-                                <b>Dynamic Atlas</b>
-                            </h6>
-                        </a>
-                    </li>
 
                     <div id="space" style="width:6px"></div>
                     <li>
                         <a href="#5" data-toggle="tab">
                             <h6>
-                                <b>Recommendation</b>
+                                <b>System Recommendations</b>
                             </h6>
                         </a>
                     </li>
@@ -140,39 +131,40 @@
                             <b id="description" style="padding-left:50px"></b>.</p>
                         <div class="list-group">
                             <ul class="list-group">
-                                <li class="list-group-item">Event Type:
-                                    <b id="alert_type" style="padding-left:50px"> </b>
+            
+                                <li class="list-group-item">Event Type: 
+                                    <b id="alert_type" style="padding-left:50px">rainfall </b>
                                 </li>
-                                <li class="list-group-item">RainFall Amount:
-                                    <b id="rainfall_amount" style="padding-left:50px"></b>
+                                <li class="list-group-item">RainFall Amount: 
+                                    <b id="rainfall_amount" style="padding-left:50px"> 30mm</b>
                                 </li>
                                 <li class="list-group-item">RainFall Intensity:
-                                    <b id="rainfall_intensity" style="padding-left:50px"></b>
+                                    <b id="rainfall_intensity" style="padding-left:50px"> 10</b>
                                 </li>
                                 <li class="list-group-item">Recorded Date:
-                                    <b id="recorded_date" style="padding-left:50px"></b>
+                                    <b id="recorded_date" style="padding-left:50px"> 2018-07-23T14:13:46.49</b>
                                 </li>
                                 <li class="list-group-item">Expectated Start Date:
-                                    <b id="expectated_startdate" style="padding-left:50px"></b>
+                                    <b id="expectated_startdate" style="padding-left:50px"> 2018-07-23T14:13:46.493</b>
                                 </li>
                                 <li class="list-group-item">Expectated End Date:
-                                    <b id="expectated_enddate" style="padding-left:50px"></b>
+                                    <b id="expectated_enddate" style="padding-left:50px">2018-07-23T14:13:46.493Z</b>
                                 </li>
                                 <li class="list-group-item">Description:
-                                    <b id="description" style="padding-left:50px"></b>
+                                    <b id="description" style="padding-left:50px">Heavy rainfall expectated. </b>
                                 </li>
                                 <li class="list-group-item">Severity:
-                                    <b id="severity" style="padding-left:50px"></b>
+                                    <b id="severity" style="padding-left:50px">High</b>
                                 </li>
                                 <li class="list-group-item">Sectors/s:
-                                    <b id="sectors" style="padding-left:50px"></b>
+                                    <b id="sectors" style="padding-left:50px">Nyabungogo</b>
                                 </li>
                                 <li class="list-group-item">Longitude/Latitude:
-                                    <b id="longitude" style="padding-left:50px"></b>,
+                                    <b id="longitude" style="padding-left:50px">30.0535/-1.9367</b>,
                                     <b id="latitude"></b>
                                 </li>
                                 <li class="list-group-item">District:
-                                    <b id="district" style="padding-left:50px"></b>
+                                    <b id="district" style="padding-left:50px">Nyarugenge</b>
                                 </li>
                             </ul>
                         </div>
@@ -203,7 +195,7 @@
                                 url: '/infrustructure',
                                 success: function (response) {
                                     disasterData.push(response);
-                                    //  console.log(disaster.length)
+                        
                                     var rows = "";
                                     $.each(response, function () {
                                         rows += "<tr><td>" + this.infrustructure_name + "</td><td>" + this.infrustructure_usage + "</td><td>" + this.runway_type + "</td>";
@@ -219,10 +211,9 @@
                         <table id="populationList" style="overflow-x:auto;">
                             <thead>
                                 <tr style="background-color: #a3cedc; color:white">
-
                                     <td>place</td>
                                     <td>population</td>
-
+                                    <td>distance</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -241,8 +232,7 @@
                                     //  console.log(disaster.length)
                                     var rows = "";
                                     $.each(response, function () {
-                                        rows += "<tr><td>" + this.place_name + "</td><td>" + this.number_of_people + "</td></tr>";
-
+                                        rows += "<tr><td>" + this.place_name + "</td><td>" + this.number_of_people + "</td><td>" + this.distance + "</td></tr>";
                                     })
                                     $(rows).appendTo("#populationList tbody");
                                 }
@@ -262,12 +252,6 @@
                     <div class="tab-pane" id="3">
                         <b>Key Messages </b>
                         <br>
-                        <p>The 2018 B cropping season (March-June) is underway, with successful planting efforts as the rains
-                            started on time and have been fairly well-distributed. With a generally favorable March-May rainfall
-                            forecast, the next harvest is likely to be average to above average, similar to 2018 Season A.
-                            With continued good food availability and access, the country is expected to remain in Minimal
-                            (IPC Phase 1). </p>
-
 
                         <p>However, during the April-May lean season, some poor households in localized areas in Eastern Province
                             that had below-average Season A production, may be in Stressed (IPC Phase 2). According to the
@@ -277,16 +261,6 @@
                             poor households typically depend more on markets to meet their food needs, there are sufficient
                             income-earning opportunities from farm labor and public work projects.
                         </p>
-
-                        <p>The Government of Rwanda’s expanded social protection programs are also facilitating food access.
-                            Due to continued funding gaps, WFP is only able to provide 75 percent of daily food rations to
-                            over 173,000 refugees in camps. In February, this triggered violent clashes between refugees
-                            in Kiziba camp and police, resulting in 11 deaths. Despite this, nearly 2,600 Burundian refugees
-                            from the DRC, who were fearing forceful deportation to Burundi, fled to Rwanda in February. In
-                            the absence of assistance, the refugee camp population would likely be in Crisis (IPC Phase 3).
-                        </p>
-
-
                     </div>
 
                     <div class="tab-pane" id="4">
@@ -329,10 +303,6 @@
 
                     </div>
 
-                    <div class="tab-pane" id="5">
-                        <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -354,3 +324,46 @@
 </body>
 
 </html>
+
+<script>
+    function loadCoordinates() {
+        hrefurl = $(location).attr("href");
+        last_part = hrefurl.substr(hrefurl.lastIndexOf('/') + 1)
+     
+    $.ajax({
+        type: 'GET',
+        contentType: 'application/json',
+        url: 'report/"'+last_part+'"',
+    
+        success: function (response) {
+            console.log(url)
+            var resultsdiv = document.getElementById('alert_type');
+            resultsdiv.innerHTML += ''+response.alert_type +'';
+            var resultsdiv = document.getElementById('rainfall_amount');
+            resultsdiv.innerHTML += ''+response.rainfall_amount +'';
+            var resultsdiv = document.getElementById('rainfall_intensity');
+            resultsdiv.innerHTML += ''+response.rainfall_intensity +'';
+            var resultsdiv = document.getElementById('recorded_date');
+            resultsdiv.innerHTML += ''+response.recorded_date +'';
+            var resultsdiv = document.getElementById('expectated_startdate');
+            resultsdiv.innerHTML += ''+response.excepected_startdate +'';
+            var resultsdiv = document.getElementById('expectated_enddate');
+            resultsdiv.innerHTML += ''+response.excepected_enddate +'';
+            var resultsdiv = document.getElementById('description');
+            resultsdiv.innerHTML += ''+response.description +'';
+            var resultsdiv = document.getElementById('severity');
+            resultsdiv.innerHTML += ''+response.severity+'';
+            var resultsdiv = document.getElementById('sectors');
+            resultsdiv.innerHTML += ''+response.sector+'';
+            var resultsdiv = document.getElementById('longitude');
+            resultsdiv.innerHTML += ''+response.longitude+'';
+            var resultsdiv = document.getElementById('latitude');
+            resultsdiv.innerHTML += ''+response.latitude+'';
+            var resultsdiv = document.getElementById('district');
+            resultsdiv.innerHTML += ''+response.district+'';
+        }
+    })
+}
+
+</script>
+<script>loadCoordinates() </script>

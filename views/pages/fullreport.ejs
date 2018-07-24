@@ -264,44 +264,60 @@
                     </div>
 
                     <div class="tab-pane" id="4">
-                        <table id="itemList" style="overflow-x:auto;">
-                            <thead>
-                                <tr style="background-color: #a3cedc; color:white">
-                                    <td>event</td>
-                                    <td>sector</td>
-                                    <td>date</td>
-                                    <td>deaths</td>
-                                    <td>injured</td>
-                                    <td>missing</td>
-                                    <td>houses_destroyed</td>
-                                    <td>houses_damaged</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-
-                        <script type="text/javascript">
-                            var disasterData = [];
-
-                            $.ajax({
-                                type: 'GET',
-                                contentType: 'application/json',
-                                url: '/disasters',
-                                success: function (response) {
-                                    disasterData.push(response);
-                                    //  console.log(disaster.length)
-                                    var rows = "";
-                                    $.each(response, function () {
-                                        rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
-
-                                    })
-                                    $(rows).appendTo("#itemList tbody");
-                                }
-                            });
-                        </script>
+                            <table id="itemList" style="overflow-x:auto;">
+                                    <thead>
+                                        <tr style="background-color: #a3cedc; color:white">
+                                            <td>event</td>
+                                            <td>sector</td>
+                                            <td>date</td>
+                                            <td>deaths</td>
+                                            <td>injured</td>
+                                            <td>missing</td>
+                                            <td>houses_destroyed</td>
+                                            <td>houses_damaged</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                
+                                <script type="text/javascript">
+                                    var disasterData = [];
+                
+                                    $.ajax({
+                                        type: 'GET',
+                                        contentType: 'application/json',
+                                        url: '/disasters',
+                                        success: function (response) {
+                                            disasterData.push(response);
+                                            //  console.log(disaster.length)
+                                            var rows = "";
+                                            $.each(response, function () {
+                                                rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
+                
+                                            })
+                                            $(rows).appendTo("#itemList tbody");
+                                        }
+                
+                                    });
+                                </script>
 
                     </div>
+                    <div class="tab-pane" id="5">
+                            <b>System Reccomendation</b>
+                            <br>
+    
+                            <p>However, during the April-May lean season, some poor households in localized areas in Eastern Province
+                                that had below-average Season A production, may be in Stressed (IPC Phase 2). According to the
+                                National Institute of Statistics, staple food prices have remained relatively stable since December
+                                2017. In February, they were 7.4 and 10 percent lower than a year ago at the national and rural
+                                levels, respectively, improving poor household purchasing power. Ahead of the lean season, as
+                                poor households typically depend more on markets to meet their food needs, there are sufficient
+                                income-earning opportunities from farm labor and public work projects.
+                            </p>
+                            
+                    </div>
+
 
                 </div>
             </div>

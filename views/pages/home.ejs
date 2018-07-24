@@ -102,14 +102,11 @@
                             var rows = "";
                             $.each(response, function () {
                                 rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
-
                             })
                             $(rows).appendTo("#itemList tbody");
                         }
-
                     });
                 </script>
-
             </div>
             </div>
         </main>

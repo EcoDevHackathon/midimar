@@ -27,11 +27,26 @@ module.exports.getReport = function getReport(region, callback) {
     console.log("controllers .... report")
     rainfallalertModel.getReport(region, callback);
 }
+
 //get coordinates data
 module.exports.getCoordinates = function getCoordinates(callback) {
     console.log("controllers .... coordinates")
     rainfallalertModel.getCoordinates(callback);
 }
+
+//get population
+module.exports.getPopulation= function getPopulation(region,callback) {
+    console.log("controllers .... coordinates")
+    rainfallalertModel.getPopulation(callback);
+}
+
+//get infrutructure
+module.exports.getInfrustructure= function getInfrustructure(callback) {
+    console.log("controllers")
+    rainfallalertModel.getInfrustructure(callback);
+}
+
+
 //writting a sync functions for sending messages
 async function sendMessage(msg) {
 

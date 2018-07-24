@@ -53,9 +53,6 @@ router.get('/warning', function (req, res) {
     res.render('pages/warning');
 });
 
-
-//warning to be disseminated
-
 //route for sending meteo alert
 router.post('/RainfallAlert', function (req, res) {
     //
@@ -109,8 +106,8 @@ router.post('/alerts/', jsonParser, function (req, res) {
 //disseminating alert
 router.post('/alerts/disseminate', jsonParser, function (req, res) {
     console.log("routes...... disseminate");
-    rainfallAlertController.disseminate(req.body.alertType, req.body.startDate, req.body.endDate, null, req.body.alertSeverity, null, new Date(), null, null, req.body.district, req.body.sector, req.body.comment, "+250785115074" , (result, err) => {  
-   if (err) {
+    rainfallAlertController.disseminate(req.body.alertType, req.body.startDate, req.body.endDate, null, req.body.alertSeverity, null, new Date(), null, null, req.body.district, req.body.sector, req.body.comment, "+250785115074", (result, err) => {
+        if (err) {
             res.status(400).json(err)
 
         } else {
@@ -145,8 +142,8 @@ router.get('/alerts/', jsonParser, function (req, res) {
 
 //get full report of a place
 router.get('/report/:region/', jsonParser, function (req, res) {
-    console.log("routes..   report...."+req.params.region);
-    rainfallAlertController.getReport(req.params.region,(err, results) => {
+    console.log("routes..   report...." + req.params.region);
+    rainfallAlertController.getReport(req.params.region, (err, results) => {
         if (err) {
             res.status(400).json(err)
         } else {
@@ -193,7 +190,7 @@ router.get('/infrustructure/', jsonParser, function (req, res) {
 
 
 //route for full report
-router.get('/fullreport/:region/',function (req, res) { res.render('pages/fullreport'); });
+router.get('/fullreport/:region/', function (req, res) { res.render('pages/fullreport'); });
 
 //default  home route 
 router.get('/', function (req, res) { res.render('pages/home'); });

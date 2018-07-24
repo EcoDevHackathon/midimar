@@ -40,10 +40,6 @@ function selectAdministratorEmail() {
   });
 }
 
-//selectAdministratorEmail()
-
-
-
 //register rainfall Alert Model into the database
 module.exports.registerRainfallAlert = async function (rainfallAlertModel, callback) {
   var alertType = rainfallAlertModel.getalertType();
@@ -135,7 +131,6 @@ module.exports.getAlerts = async function getAlerts(callback) {
 //getting report for a given region
 module.exports.getReport = async function getReport(region , callback) {
 
-  console.log("db side ooooh-----"+region)
   const query = client.query("SELECT * FROM public.rainfall_alert where public.rainfall_alert.sector = '"+region+"'", (err, result) => {
     if (err) {
       callback(err, results)
@@ -155,8 +150,8 @@ module.exports.getReport = async function getReport(region , callback) {
 }
 
 //get population data
-module.exports.getPopulation = async function getPopulation(callback) {
-  const query = client.query('SELECT * FROM public.population', (err, result) => {
+module.exports.getPopulation = async function getPopulation(region, callback) {
+  const query = client.query("SELECT * FROM public.population WHERE public.rainfall.sector = '"+region+"' ", (err, result) => {
     if (err) {
       callback(err, results)
     } else {

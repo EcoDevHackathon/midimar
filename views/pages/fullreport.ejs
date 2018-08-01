@@ -1,5 +1,3 @@
-<!doctype html>
-<% include ../partials/header %>
 <html lang="en">
 
 <head>
@@ -45,19 +43,19 @@
 
 
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                  
-                        <li class="nav-item">
-                            <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/warning">Disseminate Information</a>
-                        </li>
-           
-                    </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/warning">Disseminate Information</a>
+                </li>
+
+            </ul>
         </div>
     </nav>
 
@@ -131,11 +129,11 @@
                             <b id="description" style="padding-left:50px"></b>.</p>
                         <div class="list-group">
                             <ul class="list-group">
-            
-                                <li class="list-group-item">Event Type: 
+
+                                <li class="list-group-item">Event Type:
                                     <b id="alert_type" style="padding-left:50px">rainfall </b>
                                 </li>
-                                <li class="list-group-item">RainFall Amount: 
+                                <li class="list-group-item">RainFall Amount:
                                     <b id="rainfall_amount" style="padding-left:50px"> 30mm</b>
                                 </li>
                                 <li class="list-group-item">RainFall Intensity:
@@ -181,7 +179,7 @@
                                     <td>runway</td>
 
                                 </tr>
-                                
+
                             </thead>
                             <tbody>
                             </tbody>
@@ -196,7 +194,7 @@
                                 url: '/infrustructure',
                                 success: function (response) {
                                     disasterData.push(response);
-                        
+
                                     var rows = "";
                                     $.each(response, function () {
                                         rows += "<tr><td>" + this.infrustructure_name + "</td><td>" + this.infrustructure_usage + "</td><td>" + this.runway_type + "</td>";
@@ -265,68 +263,68 @@
                     </div>
 
                     <div class="tab-pane" id="4">
-                            <table id="itemList" style="overflow-x:auto;">
-                                    <thead>
-                                        <tr style="background-color: #a3cedc; color:white">
-                                            <td>event</td>
-                                            <td>sector</td>
-                                            <td>date</td>
-                                            <td>deaths</td>
-                                            <td>injured</td>
-                                            <td>missing</td>
-                                            <td>houses_destroyed</td>
-                                            <td>houses_damaged</td>
-                                        </tr>
-                                        <tr>
-                                                <td>RainFall </td>
-                                                <td>Giti</td>
-                                                <td>2016/12/17</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>2</td>
-                                                <td>1</td>
-                                            </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                
-                                <script type="text/javascript">
-                                    var disasterData = [];
-                
-                                    $.ajax({
-                                        type: 'GET',
-                                        contentType: 'application/json',
-                                        url: '/disasters',
-                                        success: function (response) {
-                                            disasterData.push(response);
-                                            //  console.log(disaster.length)
-                                            var rows = "";
-                                            $.each(response, function () {
-                                                rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
-                
-                                            })
-                                            $(rows).appendTo("#itemList tbody");
-                                        }
-                
-                                    });
-                                </script>
+                        <table id="itemList" style="overflow-x:auto;">
+                            <thead>
+                                <tr style="background-color: #a3cedc; color:white">
+                                    <td>event</td>
+                                    <td>sector</td>
+                                    <td>date</td>
+                                    <td>deaths</td>
+                                    <td>injured</td>
+                                    <td>missing</td>
+                                    <td>houses_destroyed</td>
+                                    <td>houses_damaged</td>
+                                </tr>
+                                <tr>
+                                    <td>RainFall </td>
+                                    <td>Giti</td>
+                                    <td>2016/12/17</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                        <script type="text/javascript">
+                            var disasterData = [];
+
+                            $.ajax({
+                                type: 'GET',
+                                contentType: 'application/json',
+                                url: '/disasters',
+                                success: function (response) {
+                                    disasterData.push(response);
+                                    //  console.log(disaster.length)
+                                    var rows = "";
+                                    $.each(response, function () {
+                                        rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
+
+                                    })
+                                    $(rows).appendTo("#itemList tbody");
+                                }
+
+                            });
+                        </script>
 
                     </div>
                     <div class="tab-pane" id="5">
-                            <b>System Reccomendation</b>
-                            <br>
-    
-                            <p>However, during the April-May lean season, some poor households in localized areas in Eastern Province
-                                that had below-average Season A production, may be in Stressed (IPC Phase 2). According to the
-                                National Institute of Statistics, staple food prices have remained relatively stable since December
-                                2017. In February, they were 7.4 and 10 percent lower than a year ago at the national and rural
-                                levels, respectively, improving poor household purchasing power. Ahead of the lean season, as
-                                poor households typically depend more on markets to meet their food needs, there are sufficient
-                                income-earning opportunities from farm labor and public work projects.
-                            </p>
-                            
+                        <b>System Reccomendation</b>
+                        <br>
+
+                        <p>However, during the April-May lean season, some poor households in localized areas in Eastern Province
+                            that had below-average Season A production, may be in Stressed (IPC Phase 2). According to the
+                            National Institute of Statistics, staple food prices have remained relatively stable since December
+                            2017. In February, they were 7.4 and 10 percent lower than a year ago at the national and rural
+                            levels, respectively, improving poor household purchasing power. Ahead of the lean season, as
+                            poor households typically depend more on markets to meet their food needs, there are sufficient
+                            income-earning opportunities from farm labor and public work projects.
+                        </p>
+
                     </div>
 
 
@@ -356,41 +354,41 @@
     function loadCoordinates() {
         hrefurl = $(location).attr("href");
         last_part = hrefurl.substr(hrefurl.lastIndexOf('/') + 1)
-     
-    $.ajax({
-        type: 'GET',
-        contentType: 'application/json',
-        url: 'report/"'+last_part+'"',
-    
-        success: function (response) {
-            console.log(url)
-            var resultsdiv = document.getElementById('alert_type');
-            resultsdiv.innerHTML += ''+response.alert_type +'';
-            var resultsdiv = document.getElementById('rainfall_amount');
-            resultsdiv.innerHTML += ''+response.rainfall_amount +'';
-            var resultsdiv = document.getElementById('rainfall_intensity');
-            resultsdiv.innerHTML += ''+response.rainfall_intensity +'';
-            var resultsdiv = document.getElementById('recorded_date');
-            resultsdiv.innerHTML += ''+response.recorded_date +'';
-            var resultsdiv = document.getElementById('expectated_startdate');
-            resultsdiv.innerHTML += ''+response.excepected_startdate +'';
-            var resultsdiv = document.getElementById('expectated_enddate');
-            resultsdiv.innerHTML += ''+response.excepected_enddate +'';
-            var resultsdiv = document.getElementById('description');
-            resultsdiv.innerHTML += ''+response.description +'';
-            var resultsdiv = document.getElementById('severity');
-            resultsdiv.innerHTML += ''+response.severity+'';
-            var resultsdiv = document.getElementById('sectors');
-            resultsdiv.innerHTML += ''+response.sector+'';
-            var resultsdiv = document.getElementById('longitude');
-            resultsdiv.innerHTML += ''+response.longitude+'';
-            var resultsdiv = document.getElementById('latitude');
-            resultsdiv.innerHTML += ''+response.latitude+'';
-            var resultsdiv = document.getElementById('district');
-            resultsdiv.innerHTML += ''+response.district+'';
-        }
-    })
-}
+
+        $.ajax({
+            type: 'GET',
+            contentType: 'application/json',
+            url: 'report/"' + last_part + '"',
+
+            success: function (response) {
+                console.log(url)
+                var resultsdiv = document.getElementById('alert_type');
+                resultsdiv.innerHTML += '' + response.alert_type + '';
+                var resultsdiv = document.getElementById('rainfall_amount');
+                resultsdiv.innerHTML += '' + response.rainfall_amount + '';
+                var resultsdiv = document.getElementById('rainfall_intensity');
+                resultsdiv.innerHTML += '' + response.rainfall_intensity + '';
+                var resultsdiv = document.getElementById('recorded_date');
+                resultsdiv.innerHTML += '' + response.recorded_date + '';
+                var resultsdiv = document.getElementById('expectated_startdate');
+                resultsdiv.innerHTML += '' + response.excepected_startdate + '';
+                var resultsdiv = document.getElementById('expectated_enddate');
+                resultsdiv.innerHTML += '' + response.excepected_enddate + '';
+                var resultsdiv = document.getElementById('description');
+                resultsdiv.innerHTML += '' + response.description + '';
+                var resultsdiv = document.getElementById('severity');
+                resultsdiv.innerHTML += '' + response.severity + '';
+                var resultsdiv = document.getElementById('sectors');
+                resultsdiv.innerHTML += '' + response.sector + '';
+                var resultsdiv = document.getElementById('longitude');
+                resultsdiv.innerHTML += '' + response.longitude + '';
+                var resultsdiv = document.getElementById('latitude');
+                resultsdiv.innerHTML += '' + response.latitude + '';
+                var resultsdiv = document.getElementById('district');
+                resultsdiv.innerHTML += '' + response.district + '';
+            }
+        })
+    }
 
 </script>
 <script>loadCoordinates() </script>

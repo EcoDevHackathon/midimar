@@ -53,8 +53,8 @@ module.exports.registerRainfallAlert = async function (rainfallAlertModel, callb
   var rainfallIntensity = rainfallAlertModel.getrainfallIntensity();
   var district = rainfallAlertModel.getdistrict();
   var sector = rainfallAlertModel.getsector();
-  client.query('INSERT INTO public.rainfall_alert(alert_type, rainfall_amount, rainfall_intensity,excepected_startdate,excepected_enddate,recorded_date,description,severity,alert_id, district,sector )VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)',
-    [alertType, rainfalAmount, rainfallIntensity, startExpectedTime, endExpectedTime, currentDate, description, alertSeverity, alertId, district, sector], (err, res) => {
+  client.query('INSERT INTO public.rainfall_alert(alert_type, rainfall_amount, rainfall_intensity,excepected_startdate,excepected_enddate,recorded_date,description,severity,alert_id, district,sector,color )VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)',
+    [alertType, rainfalAmount, rainfallIntensity, startExpectedTime, endExpectedTime, currentDate, description, alertSeverity, alertId, district, sector, 'Red'], (err, res) => {
 
       if (err) {
         console.log(err)

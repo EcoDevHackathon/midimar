@@ -63,7 +63,7 @@
 
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">Map</h6>
-            <div class="media text-muted pt-3" id="map" style='width: 1100px; height: 470px;'></div>
+            <div class="media text-muted pt-3 col col-lg-12" style=" height: 100%;" id="map" ></div>
 
         </div>
 
@@ -147,6 +147,7 @@
 
                     for (var i = 0; i < response.length; i++) {
                         //# code for the algorithm is inserted here.
+
 
                         var sector_name = response[i].sector;
                         var trimmed_variable = sector_name.trim();

@@ -49,7 +49,7 @@
                         <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="warning">Disseminate Information</a>
+                        <a class="nav-link" href="/warning">Disseminate Information</a>
                     </li>
                 </ul>
 
@@ -66,7 +66,7 @@
 
             <div class="my-3 p-3 bg-white rounded box-shadow">
                 <h6 class="border-bottom border-gray pb-2 mb-0">Map</h6>
-                <div class="media text-muted pt-3" id="map" style='width: 1100px; height: 430px;'></div>
+                <div class="media text-muted pt-3" id="map" style='width: 1100px; height: 470px;'></div>
 
             </div>
 
@@ -98,7 +98,6 @@
                         url: '/disasters',
                         success: function (response) {
                             disasterData.push(response);
-                            //  console.log(disaster.length)
                             var rows = "";
                             $.each(response, function () {
                                 rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
@@ -135,7 +134,7 @@
                     success: function (response) {
                         console.log(response)
 
-                        var mymap = L.map('map').setView([-1.9706, 30.1044], 10.6);
+                        var mymap = L.map('map').setView([-1.9706, 30.1044], 11.6);
 
                         style: 'mapbox://styles/mapbox/streets-v9',
                             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {

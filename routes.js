@@ -117,7 +117,7 @@ router.post('/alerts/disseminate', jsonParser, function (req, res) {
 });
 
 //get route for disasters
-router.get('/disasters/', jsonParser, function (req, res) {
+router.get('/disasters/', function (req, res) {
     console.log("routes.. disasters....");
     DisastersController.getDisasters((err, results) => {
         if (err) {
@@ -169,9 +169,7 @@ router.get('/coordinates/', jsonParser, function (req, res) {
 
 //get population data
 router.get('/population/', jsonParser, function (req, res) {
-    console.log("routes.. population....");
-    console.log("routes..   report...." + req.params.region);
-    rainfallAlertController.getPopulation(req.params.region, (err, results) => {
+    rainfallAlertController.getPopulation((err, results) => {
         if (err) {
             res.status(400).json(err)
         } else {

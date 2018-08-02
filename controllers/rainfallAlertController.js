@@ -35,8 +35,8 @@ module.exports.getCoordinates = function getCoordinates(callback) {
 }
 
 //get population
-module.exports.getPopulation= function getPopulation(region, callback) {
-    console.log("controllers .... coordinates")
+module.exports.getPopulation= function getPopulation(callback) {
+    console.log("controllers .... population")
     rainfallalertModel.getPopulation(callback);
 }
 

@@ -86,7 +86,22 @@
                 <tbody>
                 </tbody>
             </table>
-
+            <script type="text/javascript">
+                var disasterData = [];
+                $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: '/disasters',
+                    success: function (response) {
+                        disasterData.push(response);
+                        var rows = "";
+                        $.each(response, function () {
+                            rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
+                        })
+                        $(rows).appendTo("#itemList tbody");
+                    }
+                });
+            </script>
 
         </div>
         </div>
@@ -129,10 +144,13 @@
 
                         }).addTo(mymap);
 
-
-
                     for (var i = 0; i < response.length; i++) {
                         //# code for the algorithm is inserted here.
+                        //# impelmentation code for algorithim
+                        //var y = 0.0586* x2 - 0.0177 * x1 + 0.1925;
+                        //# where x2 = rainfall_intensity = 0.0586 and x3 = rainfall_amount = 0.1925
+                        //# these variables are to be provided from the rainfall amount from the alert
+
                         var sector_name = response[i].sector;
                         var trimmed_variable = sector_name.trim();
                         var finalString = trimmed_variable.replace("'", "");

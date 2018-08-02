@@ -1,59 +1,60 @@
-  <html lang="en">
+<html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../favicon.ico">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../favicon.ico">
 
-    <title>Disaster Alert And Coordination System </title>
+  <title>Disaster Alert And Coordination System </title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="../css/offcanvas.css" rel="stylesheet">
-    <!--leaflet css -->
+  <!-- Custom styles for this template -->
+  <link href="../css/offcanvas.css" rel="stylesheet">
+  <!--leaflet css -->
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-      crossorigin="" />
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-      crossorigin="">
-      </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin="" />
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin="">
+    </script>
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
-  </head>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+</head>
 
-  <body class="bg-light">
+<body class="bg-light">
 
-    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-      <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/warning">Disseminate Information</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/RainfallAlert">Enter Meteo Alert</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/warning">Disseminate Information</a>
+        </li>
 
-        </ul>
-        </ul>
-      </div>
-    </nav>
+      </ul>
+      </ul>
+    </div>
+  </nav>
 
-    <main role="main" class="container">
-      <form class="well form-horizontal">
+  <main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+      <form class="well form-horizontal" style="padding:right">
         <fieldset>
 
           <!-- Form Name -->
@@ -198,25 +199,24 @@
           </div>
         </fieldset>
       </form>
+    </div>
 
+  </main>
 
-    </main>
-
-    <!-- Bootstrap core JavaScript
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../js/jquery-slim.min.js"><\/script>')</script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/holder.min.js"></script>
-    <script src="../js/offcanvas.js"></script>
-    <script src="../js/jquerymin.js"></script>
-    <script src="../js/clientSide.js"></script>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../js/jquery-slim.min.js"><\/script>')</script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/holder.min.js"></script>
+  <script src="../js/offcanvas.js"></script>
+  <script src="../js/jquerymin.js"></script>
+  <script src="../js/clientSide.js"></script>
 
-    <!--script to load  alerts-->
-  </body>
+  <!--script to load  alerts-->
+</body>
 
-  </html>
-  <% include ../partials/footer %>
+</html>

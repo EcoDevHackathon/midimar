@@ -178,7 +178,7 @@ module.exports.getCoordinates = function getCoordinates(callback) {
 }
 
 //get population data
-module.exports.getPopulation = function getPopulation(region,callback) {
+module.exports.getPopulation = function getPopulation(callback) {
     console.log("models .... population")
     schema.getPopulation(callback);
 }

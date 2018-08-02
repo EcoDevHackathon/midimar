@@ -126,40 +126,21 @@
                         <div class="list-group">
                             <ul class="list-group">
 
-                                <li class="list-group-item">Event Type:
-                                    <b id="alert_type" style="padding-left:50px"></b>
-                                </li>
+                              
                                 <li class="list-group-item">RainFall Amount:
                                     <b id="rainfall_amount" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">RainFall Intensity:
                                     <b id="rainfall_intensity" style="padding-left:50px"> </b>
                                 </li>
-                                <li class="list-group-item">Recorded Date:
-                                    <b id="recorded_date" style="padding-left:50px"></b>
-                                </li>
+                                
                                 <li class="list-group-item">Expectated Start Date:
                                     <b id="expectated_startdate" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">Expectated End Date:
                                     <b id="expectated_enddate" style="padding-left:50px"></b>
                                 </li>
-                                <li class="list-group-item">Description:
-                                    <b id="description1" style="padding-left:50px"></b>
-                                </li>
-                                <li class="list-group-item">Severity:
-                                    <b id="severity" style="padding-left:50px"></b>
-                                </li>
-                                <li class="list-group-item">Sectors/s:
-                                    <b id="sectors" style="padding-left:50px"></b>
-                                </li>
-                                <li class="list-group-item">Longitude/Latitude:
-                                    <b id="longitude" style="padding-left:50px"></b>,
-                                    <b id="latitude"></b>
-                                </li>
-                                <li class="list-group-item">District:
-                                    <b id="district" style="padding-left:50px"></b>
-                                </li>
+                            
                             </ul>
                         </div>
                     </div>
@@ -187,7 +168,7 @@
                             $.ajax({
                                 type: 'GET',
                                 contentType: 'application/json',
-                             //   url: '/infrustructure',
+                                url: '/infrustructure',
                                 success: function (response) {
                                     disasterData.push(response);
 
@@ -221,7 +202,7 @@
                             $.ajax({
                                 type: 'GET',
                                 contentType: 'application/json',
-                               // url: '/population',
+                                 url: '/population',
                                 success: function (response) {
                                     disasterData.push(response);
                                  
@@ -255,30 +236,58 @@
                             income-earning opportunities from farm labor and public work projects.
                         </p>
                     </div>
+                    
+                    <div class="tab-pane" id="5">
+                            <b>An intelligent Advisory System </b>
+                            <br>
+    
+                            <p>The ideal prototype is an intelligent reccommendation system that is capble of providing automatic reasoning
+                             upon discovered knowledge but most importantly justification about the proposed reccommendation. Justification is supposed to 
+                             come from the training data sets,previous diasaster history database and other paramenters. The advisory system is
+                            not meant to take action by itself but offer choices to the Rwanda Meteo officials to take the most relevant action.
+                            </p>
+                        </div>
 
                     <div class="tab-pane" id="4">
                         <div class="my-3 p-3 bg-white rounded box-shadow">
-                            <h6 class="border-bottom border-gray pb-2 mb-0">Previous Alerts</h6>
-                            <table id="itemList" style="overflow-x:auto;">
-                                <thead>
-                                    <tr style="background-color: #a3cedc; color:white">
-                                        <td>event</td>
-                                        <td>sector</td>
-                                        <td>date</td>
-                                        <td>deaths</td>
-                                        <td>injured</td>
-                                        <td>missing</td>
-                                        <td>houses_destroyed</td>
-                                        <td>houses_damaged</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-
+                            <h6 class="border-bottom border-gray pb-2 mb-0">Disaster History</h6>
+                            
+                            <table id="disasterList" style="overflow-x:auto;">
+                                    <thead>
+                                        <tr style="background-color: #a3cedc; color:white">
+                                            <td>event</td>
+                                            <td>sector</td>
+                                            <td>date</td>
+                                            <td>deaths</td>
+                                            <td>injured</td>
+                                            <td>missing</td>
+                                            <td>houses_destroyed</td>
+                                            <td>houses_damaged</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <script type="text/javascript">
+                                   
+                                    $.ajax({
+                                        type: 'GET',
+                                        contentType: 'application/json',
+                                        url: '/disasters/',
+                                        success: function (response) {
+                                            disasterData.push(response);
+                                            var rows = "";
+                                            $.each(response, function () {
+                                                rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
+                                            })
+                                            $(rows).appendTo("#disasterList tbody");
+                                        }
+                                    });
+                                </script>
                         </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

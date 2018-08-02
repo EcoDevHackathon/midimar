@@ -150,8 +150,8 @@ module.exports.getReport = async function getReport(region , callback) {
 }
 
 //get population data
-module.exports.getPopulation = async function getPopulation(region, callback) {
-  const query = client.query("SELECT * FROM public.population WHERE public.rainfall.sector = '"+region+"' ", (err, result) => {
+module.exports.getPopulation = async function getPopulation(callback) {
+  const query = client.query('SELECT * FROM public.population', (err, result) => {
     if (err) {
       callback(err,results)
     } else {

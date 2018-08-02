@@ -52,171 +52,168 @@
   </nav>
 
   <main role="main" class="container">
-    <form class="well form-horizontal" action=" " method="POST">
-      <fieldset>
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+      <form class="well form-horizontal" action=" " method="POST">
+        <fieldset>
 
-        <!-- Form Name -->
-        <legend>Fill the alert form with respective data</legend>
+          <!-- Form Name -->
+          <legend>Fill the alert form with respective data</legend>
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Alert Type</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-pencil"></i>
-              </span>
-              <input name="alertType" id="alertType" placeholder="Example: rainfall" class="form-control" type="text">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Alert Type</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </span>
+                <input name="alertType" id="alertType" placeholder="Example: rainfall" class="form-control" type="text">
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">District</label>
-          <div class="col-md-4 selectContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-home"></i>
-              </span>
-              <input name="district" id="district" placeholder="district" class="form-control" type="text">
+          <div class="form-group">
+            <label class="col-md-4 control-label">District</label>
+            <div class="col-md-4 selectContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <input name="district" id="district" placeholder="district" class="form-control" type="text">
+              </div>
             </div>
           </div>
-        </div>
 
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Sector</label>
-          <div class="col-md-4 selectContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-home"></i>
-              </span>
-              <input name="sector" id="sector" placeholder="Ex: Nyamirambo" class="form-control" type="text">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Sector</label>
+            <div class="col-md-4 selectContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <input name="sector" id="sector" placeholder="Ex: Nyamirambo" class="form-control" type="text">
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Expected Starting Time</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </span>
-              <input type="date" name="start" id="expectedStartingTime" placeholder="date" class="form-control">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Expected Starting Time</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input type="date" name="start" id="expectedStartingTime" placeholder="date" class="form-control">
 
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Expected End Time</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </span>
-              <input name="expected end" placeholder="date" id="expectedEndTime" class="form-control" type="date">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Expected End Time</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input name="expected end" placeholder="date" id="expectedEndTime" class="form-control" type="date">
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Rainfall amount(mm)</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </span>
-              <input name="amount" id="rainfallAmount" placeholder="Ex: 20" class="form-control" type="text">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Rainfall amount(mm)</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input name="amount" id="rainfallAmount" placeholder="Ex: 20" class="form-control" type="text">
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label"> Rainfall Intensity(mm/h)</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </span>
-              <input name="intensity" id="rainfallIntensity" placeholder="Ex: 1.5" class="form-control" type="text">
+          <div class="form-group">
+            <label class="col-md-4 control-label"> Rainfall Intensity(mm/h)</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                <input name="intensity" id="rainfallIntensity" placeholder="Ex: 1.5" class="form-control" type="text">
+              </div>
             </div>
           </div>
-        </div>
 
 
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Severity</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-fire"></i>
-              </span>
-              <select name="severity" id="alertySeverity" class="form-control selectpicker">
-                <option value=" ">Select one</option>
-                <option>Low</option>
-                <option>Medium</option>
-                <option>High</option>
-              </select>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Severity</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-fire"></i>
+                </span>
+                <select name="severity" id="alertySeverity" class="form-control selectpicker">
+                  <option value=" ">Select one</option>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                </select>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Description</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyhicon-star"></i>
-              </span>
-              <textarea class="form-control" rows="5" id="description"></textarea>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Description</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyhicon-star"></i>
+                </span>
+                <textarea class="form-control" rows="5" id="description"></textarea>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Text input-->
+          <!-- Text input-->
 
-
-        <!-- Button -->
-        <div class="form-group">
-          <label class="col-md-4 control-label"></label>
-          <div class="col-md-4">
-            <button id="sendAlert" class="btn btn-warning">Send
-              <span class="glyphicon glyphicon-send"></span>
-            </button>
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+              <button id="sendAlert" class="btn btn-warning">Send
+                <span class="glyphicon glyphicon-send"></span>
+              </button>
+            </div>
           </div>
-        </div>
 
+        </fieldset>
+      </form>
 
-
-
-      </fieldset>
-    </form>
-
-
+    </div>
   </main>
 
   <!-- Bootstrap core JavaScript
@@ -236,4 +233,3 @@
 </body>
 
 </html>
-<% include ../partials/footer %>

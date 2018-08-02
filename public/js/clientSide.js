@@ -179,7 +179,13 @@ function loadFullreport()
             var resultsdiv = document.getElementById('latitude');
             resultsdiv.innerHTML += '' + response[0].latitude + '';
             var resultsdiv = document.getElementById('district');
-            resultsdiv.innerHTML += '' + response.district + '';      
+            resultsdiv.innerHTML += '' + response.district + '';    
+            //severity detail 
+            var resultsdiv = document.getElementById('severity_detail');
+            resultsdiv.innerHTML += '' + response[0].severity + '';   
+
+            var resultsdiv = document.getElementById('event_type');
+            resultsdiv.innerHTML += '' + response[0].alert_type + ''; 
         }
     });
 

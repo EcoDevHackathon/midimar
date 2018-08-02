@@ -24,7 +24,7 @@ module.exports.getAlerts = function getAlerts(callback) {
 }
 //get full report  model
 module.exports.getReport = function getReport(region, callback) {
-    console.log("controllers .... report")
+    console.log("controllers .......... get report")
     rainfallalertModel.getReport(region, callback);
 }
 
@@ -35,7 +35,7 @@ module.exports.getCoordinates = function getCoordinates(callback) {
 }
 
 //get population
-module.exports.getPopulation= function getPopulation(region,callback) {
+module.exports.getPopulation= function getPopulation(region, callback) {
     console.log("controllers .... coordinates")
     rainfallalertModel.getPopulation(callback);
 }

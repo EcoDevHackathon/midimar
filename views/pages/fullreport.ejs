@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,15 +6,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Disaster Alert System </title>
+    <title>(UNDP-METEO) Disaster Alert And Coordination System </title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../css/offcanvas.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="../css/tabs.css" rel="stylesheet">
     <!--leaflet css -->
 
@@ -28,8 +25,6 @@
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
-    <link href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' rel='stylesheet' />
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
     <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 </head>
@@ -127,43 +122,43 @@
                     <div class="tab-pane active" id="1">
                         <h3>Event Summary</h3>
                         <p>
-                            <b id="description" style="padding-left:50px"></b>.</p>
+                            <b id="description" style="padding-left:50px"></b></p>
                         <div class="list-group">
                             <ul class="list-group">
 
                                 <li class="list-group-item">Event Type:
-                                    <b id="alert_type" style="padding-left:50px">rainfall </b>
+                                    <b id="alert_type" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">RainFall Amount:
-                                    <b id="rainfall_amount" style="padding-left:50px"> 30mm</b>
+                                    <b id="rainfall_amount" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">RainFall Intensity:
-                                    <b id="rainfall_intensity" style="padding-left:50px"> 10</b>
+                                    <b id="rainfall_intensity" style="padding-left:50px"> </b>
                                 </li>
                                 <li class="list-group-item">Recorded Date:
-                                    <b id="recorded_date" style="padding-left:50px"> 2018-07-23T14:13:46.49</b>
+                                    <b id="recorded_date" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">Expectated Start Date:
-                                    <b id="expectated_startdate" style="padding-left:50px"> 2018-07-23T14:13:46.493</b>
+                                    <b id="expectated_startdate" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">Expectated End Date:
-                                    <b id="expectated_enddate" style="padding-left:50px">2018-07-23T14:13:46.493Z</b>
+                                    <b id="expectated_enddate" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">Description:
-                                    <b id="description" style="padding-left:50px">Heavy rainfall expectated. </b>
+                                    <b id="description1" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">Severity:
-                                    <b id="severity" style="padding-left:50px">High</b>
+                                    <b id="severity" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">Sectors/s:
-                                    <b id="sectors" style="padding-left:50px">Nyabungogo</b>
+                                    <b id="sectors" style="padding-left:50px"></b>
                                 </li>
                                 <li class="list-group-item">Longitude/Latitude:
-                                    <b id="longitude" style="padding-left:50px">30.0535/-1.9367</b>,
+                                    <b id="longitude" style="padding-left:50px"></b>,
                                     <b id="latitude"></b>
                                 </li>
                                 <li class="list-group-item">District:
-                                    <b id="district" style="padding-left:50px">Nyarugenge</b>
+                                    <b id="district" style="padding-left:50px"></b>
                                 </li>
                             </ul>
                         </div>
@@ -192,7 +187,7 @@
                             $.ajax({
                                 type: 'GET',
                                 contentType: 'application/json',
-                                url: '/infrustructure',
+                             //   url: '/infrustructure',
                                 success: function (response) {
                                     disasterData.push(response);
 
@@ -226,10 +221,10 @@
                             $.ajax({
                                 type: 'GET',
                                 contentType: 'application/json',
-                                url: '/population',
+                               // url: '/population',
                                 success: function (response) {
                                     disasterData.push(response);
-                                    //  console.log(disaster.length)
+                                 
                                     var rows = "";
                                     $.each(response, function () {
                                         rows += "<tr><td>" + this.place_name + "</td><td>" + this.number_of_people + "</td><td>" + this.distance + "</td></tr>";
@@ -245,8 +240,6 @@
 
                         <hr>
                         <h5>Exposed Population </h5>
-
-
                     </div>
 
                     <div class="tab-pane" id="3">
@@ -264,78 +257,34 @@
                     </div>
 
                     <div class="tab-pane" id="4">
-                        <table id="itemList" style="overflow-x:auto;">
-                            <thead>
-                                <tr style="background-color: #a3cedc; color:white">
-                                    <td>event</td>
-                                    <td>sector</td>
-                                    <td>date</td>
-                                    <td>deaths</td>
-                                    <td>injured</td>
-                                    <td>missing</td>
-                                    <td>houses_destroyed</td>
-                                    <td>houses_damaged</td>
-                                </tr>
-                                <tr>
-                                    <td>RainFall </td>
-                                    <td>Giti</td>
-                                    <td>2016/12/17</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>2</td>
-                                    <td>1</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <div class="my-3 p-3 bg-white rounded box-shadow">
+                            <h6 class="border-bottom border-gray pb-2 mb-0">Previous Alerts</h6>
+                            <table id="itemList" style="overflow-x:auto;">
+                                <thead>
+                                    <tr style="background-color: #a3cedc; color:white">
+                                        <td>event</td>
+                                        <td>sector</td>
+                                        <td>date</td>
+                                        <td>deaths</td>
+                                        <td>injured</td>
+                                        <td>missing</td>
+                                        <td>houses_destroyed</td>
+                                        <td>houses_damaged</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
 
-                        <script type="text/javascript">
-                            var disasterData = [];
-
-                            $.ajax({
-                                type: 'GET',
-                                contentType: 'application/json',
-                                url: '/disasters',
-                                success: function (response) {
-                                    disasterData.push(response);
-                                    //  console.log(disaster.length)
-                                    var rows = "";
-                                    $.each(response, function () {
-                                        rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
-
-                                    })
-                                    $(rows).appendTo("#itemList tbody");
-                                }
-
-                            });
-                        </script>
-
+                        </div>
+                        </div>
                     </div>
-                    <div class="tab-pane" id="5">
-                        <b>System Reccomendation</b>
-                        <br>
-
-                        <p>However, during the April-May lean season, some poor households in localized areas in Eastern Province
-                            that had below-average Season A production, may be in Stressed (IPC Phase 2). According to the
-                            National Institute of Statistics, staple food prices have remained relatively stable since December
-                            2017. In February, they were 7.4 and 10 percent lower than a year ago at the national and rural
-                            levels, respectively, improving poor household purchasing power. Ahead of the lean season, as
-                            poor households typically depend more on markets to meet their food needs, there are sufficient
-                            income-earning opportunities from farm labor and public work projects.
-                        </p>
-
-                    </div>
-
-
                 </div>
             </div>
         </div>
 
     </main>
-
-    <!-- Bootstrap core JavaScript
+  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -351,45 +300,3 @@
 
 </html>
 
-<script>
-    function loadCoordinates() {
-        hrefurl = $(location).attr("href");
-        last_part = hrefurl.substr(hrefurl.lastIndexOf('/') + 1)
-
-        $.ajax({
-            type: 'GET',
-            contentType: 'application/json',
-            url: 'report/"' + last_part + '"',
-
-            success: function (response) {
-                console.log(url)
-                var resultsdiv = document.getElementById('alert_type');
-                resultsdiv.innerHTML += '' + response.alert_type + '';
-                var resultsdiv = document.getElementById('rainfall_amount');
-                resultsdiv.innerHTML += '' + response.rainfall_amount + '';
-                var resultsdiv = document.getElementById('rainfall_intensity');
-                resultsdiv.innerHTML += '' + response.rainfall_intensity + '';
-                var resultsdiv = document.getElementById('recorded_date');
-                resultsdiv.innerHTML += '' + response.recorded_date + '';
-                var resultsdiv = document.getElementById('expectated_startdate');
-                resultsdiv.innerHTML += '' + response.excepected_startdate + '';
-                var resultsdiv = document.getElementById('expectated_enddate');
-                resultsdiv.innerHTML += '' + response.excepected_enddate + '';
-                var resultsdiv = document.getElementById('description');
-                resultsdiv.innerHTML += '' + response.description + '';
-                var resultsdiv = document.getElementById('severity');
-                resultsdiv.innerHTML += '' + response.severity + '';
-                var resultsdiv = document.getElementById('sectors');
-                resultsdiv.innerHTML += '' + response.sector + '';
-                var resultsdiv = document.getElementById('longitude');
-                resultsdiv.innerHTML += '' + response.longitude + '';
-                var resultsdiv = document.getElementById('latitude');
-                resultsdiv.innerHTML += '' + response.latitude + '';
-                var resultsdiv = document.getElementById('district');
-                resultsdiv.innerHTML += '' + response.district + '';
-            }
-        })
-    }
-
-</script>
-<script>loadCoordinates() </script>

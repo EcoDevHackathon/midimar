@@ -142,12 +142,15 @@ router.get('/alerts/', jsonParser, function (req, res) {
 
 //get full report of a place
 router.get('/report/:region/', jsonParser, function (req, res) {
-    console.log("routes..   report...." + req.params.region);
+    console.log("get report   report...." + req.params.region);
+    
     rainfallAlertController.getReport(req.params.region, (err, results) => {
         if (err) {
             res.status(400).json(err)
         } else {
-            res.status(200).json(results.rows);
+           // console.log(results.rows)
+       res.status(200).json(results.rows);
+    
         }
     });
 });
@@ -167,7 +170,8 @@ router.get('/coordinates/', jsonParser, function (req, res) {
 //get population data
 router.get('/population/', jsonParser, function (req, res) {
     console.log("routes.. population....");
-    rainfallAlertController.getPopulation((err, results) => {
+    console.log("routes..   report...." + req.params.region);
+    rainfallAlertController.getPopulation(req.params.region, (err, results) => {
         if (err) {
             res.status(400).json(err)
         } else {

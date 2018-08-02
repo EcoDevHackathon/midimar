@@ -14,11 +14,6 @@ $(document).ready(function () {
         disseminateWarning();
     });
 
-    $(".fullreport").click(function () {
-        window.location = "http://localhost/fullreport/";
-        alert('hey')
-    });
-
 });
 
 
@@ -122,15 +117,76 @@ function loadDisasterHistory() {
         contentType: 'application/json',
         url: '/disasters',
         success: function (response) {
-
-            //for(var y in response){
-            //console.log(response.rows[y].disaster_type)
-            disasterData.push(response);
+            disasterData.push(response); 
         }
 
     });
 }
 
+//function to load disasters
 
-loadDisasterHistory()
+function loadDisasters(){
+var disasterData = [];
+
+$.ajax({
+    type: 'GET',
+    contentType: 'application/json',
+    url: '/disasters',
+    success: function (response) {
+        disasterData.push(response);
+      
+        var rows = "";
+        $.each(response, function () {
+            rows += "<tr><td>" + this.disaster_type + "</td><td>" + this.sector + "</td><td>" + this.recorded_date + "</td><td>" + this.deaths + "</td><td>" + this.injured + "</td><td>" + this.missing + "</td><td>" + this.houses_destroyed + "</td><td>" + this.houses_damaged + "</td></tr>";
+        })
+        $(rows).appendTo("#itemList tbody");
+    }
+});
+}
+
+//function load data given sector
+function loadFullreport()
+{
+    hrefurl = $(location).attr("href");
+    last_part = hrefurl.substr(hrefurl.lastIndexOf('/') + 1)
+    urlString =  last_part
+    $.ajax({
+        url: '/report/'+urlString,
+        type: 'GET',
+        contentType: 'application/json',
+        success: function (response) {
+  
+            var resultsdiv = document.getElementById('alert_type');
+            resultsdiv.innerHTML += '' + response[0].alert_type + '';
+            var resultsdiv = document.getElementById('rainfall_amount');
+            resultsdiv.innerHTML += '' + response[0].rainfall_amount + '';
+            var resultsdiv = document.getElementById('rainfall_intensity');
+            resultsdiv.innerHTML += '' + response[0].rainfall_intensity + '';
+            var resultsdiv = document.getElementById('recorded_date');
+            resultsdiv.innerHTML += '' + response[0].recorded_date + '';
+            var resultsdiv = document.getElementById('expectated_startdate');
+            resultsdiv.innerHTML += '' + response[0].excepected_startdate + '';
+            var resultsdiv = document.getElementById('expectated_enddate');
+            resultsdiv.innerHTML += '' + response[0].excepected_enddate + '';
+            var resultsdiv = document.getElementById('description');
+            resultsdiv.innerHTML += '' + response[0].description + '';
+            var resultsdiv = document.getElementById('severity');
+            resultsdiv.innerHTML += '' + response[0].severity + '';
+            var resultsdiv = document.getElementById('sectors');
+            resultsdiv.innerHTML += '' + response[0].sector + '';
+            var resultsdiv = document.getElementById('longitude');
+            resultsdiv.innerHTML += '' + response[0].longitude + '';
+            var resultsdiv = document.getElementById('latitude');
+            resultsdiv.innerHTML += '' + response[0].latitude + '';
+            var resultsdiv = document.getElementById('district');
+            resultsdiv.innerHTML += '' + response.district + '';      
+        }
+    });
+
+}
+
+loadFullreport()
+
+//loadDisasters()
+//loadDisasterHistory()
 

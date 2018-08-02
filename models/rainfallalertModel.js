@@ -167,7 +167,7 @@ module.exports.getAlerts = function getAlerts(callback) {
     schema.getAlerts(callback);
 }
 module.exports.getReport = function getReport(region, callback) {
-    console.log("models .... reoprt")
+    console.log("models get .......... reoprt")
     schema.getReport(region, callback);
 }
 

@@ -69,7 +69,7 @@ module.exports.registerRainfallAlert = async function (rainfallAlertModel, callb
 module.exports.getDisasters = async function getDisasters(callback) {
   const query = client.query('SELECT disaster_type,sector,recorded_date,deaths,injured,missing,houses_destroyed,houses_damaged,relocated FROM public.disaster_history', (err, result) => {
   if (err) {
-      callback(err, results)
+      callback(err)
     } else {
       query.on('row', (row) => {
         results.push(jsonArray);
@@ -140,7 +140,7 @@ module.exports.getReport = async function getReport(region , callback) {
       });
 
       query.on('end', () => {
-        console.log("disasters????", results);
+        console.log("get report", results);
         callback(err, result)
       });
 
@@ -153,7 +153,7 @@ module.exports.getReport = async function getReport(region , callback) {
 module.exports.getPopulation = async function getPopulation(region, callback) {
   const query = client.query("SELECT * FROM public.population WHERE public.rainfall.sector = '"+region+"' ", (err, result) => {
     if (err) {
-      callback(err, results)
+      callback(err,results)
     } else {
       query.on('row', (row) => {
         results.push(row);
